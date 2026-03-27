@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "1.0",
+  "screen": {
+    "id": "form",
+    "title": "Feedback Form",
+    "root": {
+      "type": "column",
+      "props": {
+        "mainAxisAlignment": "start",
+        "crossAxisAlignment": "stretch",
+        "padding": { "top": 32, "bottom": 32, "left": 24, "right": 24 }
+      },
+      "children": [
+        {
+          "type": "text",
+          "props": {
+            "content": "We value your feedback",
+            "style": { "fontSize": 22, "fontWeight": "bold" }
+          }
+        },
+        { "type": "spacer", "props": { "height": 8 } },
+        {
+          "type": "text",
+          "props": {
+            "content": "Fill in the fields below and submit.",
+            "style": { "fontSize": 14, "color": "#666666" }
+          }
+        },
+        { "type": "spacer", "props": { "height": 24 } },
+        {
+          "type": "input",
+          "id": "name",
+          "props": { "label": "Your Name", "hint": "Enter your full name" }
+        },
+        { "type": "spacer", "props": { "height": 12 } },
+        {
+          "type": "input",
+          "id": "email",
+          "props": { "label": "Email", "hint": "you@example.com", "keyboardType": "emailAddress" }
+        },
+        { "type": "spacer", "props": { "height": 12 } },
+        {
+          "type": "input",
+          "id": "message",
+          "props": { "label": "Message", "hint": "Tell us what you think...", "maxLines": 4 }
+        },
+        { "type": "spacer", "props": { "height": 24 } },
+        {
+          "type": "button",
+          "props": {
+            "label": "Submit Feedback",
+            "style": { "backgroundColor": "#6200EE", "textColor": "#FFFFFF" }
+          },
+          "action": { "type": "submit" }
+        },
+        { "type": "spacer", "props": { "height": 8 } },
+        {
+          "type": "button",
+          "props": {
+            "label": "Back to Home",
+            "style": { "backgroundColor": "#E0E0E0", "textColor": "#333333" }
+          },
+          "action": { "type": "navigate", "targetScreenId": "home" }
+        }
+      ]
+    }
+  }
+}

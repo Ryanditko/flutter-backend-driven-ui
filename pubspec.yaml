@@ -1,0 +1,27 @@
+name: flutter_backend_driven_ui
+description: >
+  A server-driven UI demo that renders screens dynamically from JSON contracts.
+  No hardcoded layouts — the widget tree is built entirely at runtime.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.11.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/screens/

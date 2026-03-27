@@ -1,0 +1,88 @@
+{
+  "schemaVersion": "1.0",
+  "screen": {
+    "id": "profile",
+    "title": "Profile",
+    "root": {
+      "type": "column",
+      "props": {
+        "mainAxisAlignment": "start",
+        "crossAxisAlignment": "center",
+        "padding": { "top": 40, "bottom": 32, "left": 24, "right": 24 }
+      },
+      "children": [
+        {
+          "type": "image",
+          "props": {
+            "url": "https://picsum.photos/seed/avatar/150/150",
+            "width": 120,
+            "height": 120,
+            "borderRadius": 60
+          }
+        },
+        { "type": "spacer", "props": { "height": 16 } },
+        {
+          "type": "text",
+          "props": {
+            "content": "Jane Doe",
+            "style": { "fontSize": 24, "fontWeight": "bold", "textAlign": "center" }
+          }
+        },
+        {
+          "type": "text",
+          "props": {
+            "content": "jane.doe@example.com",
+            "style": { "fontSize": 14, "color": "#888888", "textAlign": "center" }
+          }
+        },
+        { "type": "spacer", "props": { "height": 24 } },
+        {
+          "type": "card",
+          "props": { "padding": { "top": 16, "bottom": 16, "left": 16, "right": 16 } },
+          "children": [
+            {
+              "type": "column",
+              "props": { "crossAxisAlignment": "start" },
+              "children": [
+                {
+                  "type": "text",
+                  "props": {
+                    "content": "Account Details",
+                    "style": { "fontSize": 18, "fontWeight": "w600" }
+                  }
+                },
+                { "type": "spacer", "props": { "height": 8 } },
+                {
+                  "type": "text",
+                  "props": { "content": "Member since: January 2024", "style": { "fontSize": 14 } }
+                },
+                {
+                  "type": "text",
+                  "props": { "content": "Plan: Premium", "style": { "fontSize": 14 } }
+                }
+              ]
+            }
+          ]
+        },
+        { "type": "spacer", "props": { "height": 24 } },
+        {
+          "type": "button",
+          "props": {
+            "label": "Show Greeting",
+            "style": { "backgroundColor": "#03DAC5", "textColor": "#000000" }
+          },
+          "action": { "type": "snackbar", "message": "Hello from the server! 👋" }
+        },
+        { "type": "spacer", "props": { "height": 8 } },
+        {
+          "type": "button",
+          "props": {
+            "label": "Back to Home",
+            "style": { "backgroundColor": "#6200EE", "textColor": "#FFFFFF" }
+          },
+          "action": { "type": "navigate", "targetScreenId": "home" }
+        }
+      ]
+    }
+  }
+}

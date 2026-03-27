@@ -1,0 +1,5 @@
+# Tell GitHub Linguist to ignore Flutter platform scaffolding.
+# Ensures the repo is shown as "Dart" on GitHub.
+android/** linguist-generated
+ios/** linguist-generated
+web/** linguist-generated
