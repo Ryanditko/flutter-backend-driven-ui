@@ -15,6 +15,7 @@ class PlaygroundApiClient {
     'form',
     'components_showcase',
     'expressions_demo',
+    'theme_demo',
   ];
 
   ScreenContract parseContract(String jsonString) {
