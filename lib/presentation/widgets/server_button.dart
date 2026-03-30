@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../../core/models/screen_contract.dart';
 
@@ -26,13 +27,17 @@ Widget buildServerButton(
         ),
         padding: const EdgeInsets.symmetric(vertical: 14),
       ),
-      onPressed: () => _handleAction(context, node.action),
+      onPressed: () => handleAction(context, node.action),
       child: Text(label, style: const TextStyle(fontSize: 16)),
     ),
   );
 }
 
-void _handleAction(BuildContext context, ActionDef? action) {
+/// Interprets an [ActionDef] and performs the corresponding side-effect.
+///
+/// Exposed as a top-level function so other interactive components (chips,
+/// switches, etc.) can reuse the same action handling.
+void handleAction(BuildContext context, ActionDef? action) {
   if (action == null) return;
 
   switch (action.type) {
@@ -40,12 +45,38 @@ void _handleAction(BuildContext context, ActionDef? action) {
       if (action.targetScreenId != null) {
         Navigator.of(context).pushNamed('/screen/${action.targetScreenId}');
       }
+    case 'goBack':
+      if (Navigator.of(context).canPop()) Navigator.of(context).pop();
     case 'snackbar':
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(action.message ?? '')),
       );
     case 'submit':
       _handleSubmit(context);
+    case 'copyToClipboard':
+      final text = action.message ?? '';
+      Clipboard.setData(ClipboardData(text: text));
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Copied to clipboard')),
+      );
+    case 'openUrl':
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Open URL: ${action.message ?? ''}')),
+      );
+    case 'showDialog':
+      showDialog<void>(
+        context: context,
+        builder: (_) => AlertDialog(
+          title: Text(action.targetScreenId ?? 'Alert'),
+          content: Text(action.message ?? ''),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text('OK'),
+            ),
+          ],
+        ),
+      );
     default:
       debugPrint('Unknown action type: ${action.type}');
   }
