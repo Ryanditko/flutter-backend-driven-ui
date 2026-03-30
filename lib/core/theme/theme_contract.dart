@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../utils/color_utils.dart';
+
 /// A theme definition that can be embedded in a screen contract, allowing
 /// the backend to control colors and typography per-screen.
 class ThemeContract {
@@ -39,11 +41,11 @@ class ThemeContract {
   /// Builds a Flutter [ThemeData] by layering the contract's values on top
   /// of the given [base] theme.
   ThemeData applyTo(ThemeData base) {
-    final primary = _parseColor(primaryColor);
-    final secondary = _parseColor(secondaryColor);
-    final bg = _parseColor(backgroundColor);
-    final surface = _parseColor(surfaceColor);
-    final error = _parseColor(errorColor);
+    final primary = parseHexColor(primaryColor);
+    final secondary = parseHexColor(secondaryColor);
+    final bg = parseHexColor(backgroundColor);
+    final surface = parseHexColor(surfaceColor);
+    final error = parseHexColor(errorColor);
     final isDark = brightness == 'dark';
 
     ColorScheme scheme = isDark
@@ -71,11 +73,4 @@ class ThemeContract {
     );
   }
 
-  static Color? _parseColor(String? hex) {
-    if (hex == null || hex.isEmpty) return null;
-    final raw = hex.replaceFirst('#', '');
-    if (raw.length == 6) return Color(int.parse('FF$raw', radix: 16));
-    if (raw.length == 8) return Color(int.parse(raw, radix: 16));
-    return null;
-  }
 }

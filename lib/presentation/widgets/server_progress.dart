@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../core/models/screen_contract.dart';
+import '../../core/utils/color_utils.dart';
 
 Widget buildServerProgress(
   ComponentNode node,
@@ -9,8 +10,8 @@ Widget buildServerProgress(
 ) {
   final variant = node.props['variant'] as String? ?? 'linear';
   final value = (node.props['value'] as num?)?.toDouble();
-  final color = _parseColor(node.props['color'] as String?);
-  final trackColor = _parseColor(node.props['trackColor'] as String?);
+  final color = parseHexColor(node.props['color'] as String?);
+  final trackColor = parseHexColor(node.props['trackColor'] as String?);
   final strokeWidth = (node.props['strokeWidth'] as num?)?.toDouble() ?? 4;
   final size = (node.props['size'] as num?)?.toDouble();
 
@@ -35,12 +36,4 @@ Widget buildServerProgress(
     backgroundColor: trackColor,
     minHeight: strokeWidth,
   );
-}
-
-Color? _parseColor(String? hex) {
-  if (hex == null || hex.isEmpty) return null;
-  final raw = hex.replaceFirst('#', '');
-  if (raw.length == 6) return Color(int.parse('FF$raw', radix: 16));
-  if (raw.length == 8) return Color(int.parse(raw, radix: 16));
-  return null;
 }

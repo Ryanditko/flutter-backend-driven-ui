@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../core/models/screen_contract.dart';
+import '../../core/utils/color_utils.dart';
 
 Widget buildServerIcon(
   ComponentNode node,
@@ -9,7 +10,7 @@ Widget buildServerIcon(
 ) {
   final name = node.props['name'] as String? ?? 'help_outline';
   final size = (node.props['size'] as num?)?.toDouble() ?? 24;
-  final color = _parseColor(node.props['color'] as String?);
+  final color = parseHexColor(node.props['color'] as String?);
 
   return Icon(resolveIcon(name), size: size, color: color);
 }
@@ -122,11 +123,3 @@ const _iconMap = <String, IconData>{
   'celebration': Icons.celebration,
   'rocket_launch': Icons.rocket_launch,
 };
-
-Color? _parseColor(String? hex) {
-  if (hex == null || hex.isEmpty) return null;
-  final raw = hex.replaceFirst('#', '');
-  if (raw.length == 6) return Color(int.parse('FF$raw', radix: 16));
-  if (raw.length == 8) return Color(int.parse(raw, radix: 16));
-  return null;
-}

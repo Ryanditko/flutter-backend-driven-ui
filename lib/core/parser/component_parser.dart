@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../expression/expression_context.dart';
 import '../expression/template_engine.dart';
 import '../models/screen_contract.dart';
+import '../utils/color_utils.dart';
 import 'component_registry.dart';
 import '../../presentation/widgets/server_badge.dart';
 import '../../presentation/widgets/server_button.dart';
@@ -175,7 +176,7 @@ class ComponentParser {
     Widget Function(ComponentNode) buildChild,
   ) {
     final padding = _parsePadding(node.props['padding']);
-    final bgColor = _parseColor(node.props['backgroundColor'] as String?);
+    final bgColor = parseHexColor(node.props['backgroundColor'] as String?);
 
     return Container(
       padding: padding,
@@ -361,14 +362,6 @@ class ComponentParser {
     if (raw is num) {
       return EdgeInsets.all(raw.toDouble());
     }
-    return null;
-  }
-
-  static Color? _parseColor(String? hex) {
-    if (hex == null || hex.isEmpty) return null;
-    final raw = hex.replaceFirst('#', '');
-    if (raw.length == 6) return Color(int.parse('FF$raw', radix: 16));
-    if (raw.length == 8) return Color(int.parse(raw, radix: 16));
     return null;
   }
 

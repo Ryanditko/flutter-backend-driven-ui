@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../core/models/screen_contract.dart';
+import '../../core/utils/color_utils.dart';
 
 Widget buildServerButton(
   ComponentNode node,
@@ -12,8 +13,8 @@ Widget buildServerButton(
   final rawStyle = node.props['style'] as Map<String, dynamic>?;
   final style = rawStyle != null ? ButtonStyleModel.fromJson(rawStyle) : null;
 
-  final bgColor = _parseColor(style?.backgroundColor) ?? Theme.of(context).colorScheme.primary;
-  final textColor = _parseColor(style?.textColor) ?? Colors.white;
+  final bgColor = parseHexColor(style?.backgroundColor) ?? Theme.of(context).colorScheme.primary;
+  final textColor = parseHexColor(style?.textColor) ?? Colors.white;
   final radius = style?.borderRadius ?? 8.0;
 
   return SizedBox(
@@ -80,14 +81,6 @@ void handleAction(BuildContext context, ActionDef? action) {
     default:
       debugPrint('Unknown action type: ${action.type}');
   }
-}
-
-Color? _parseColor(String? hex) {
-  if (hex == null || hex.isEmpty) return null;
-  final raw = hex.replaceFirst('#', '');
-  if (raw.length == 6) return Color(int.parse('FF$raw', radix: 16));
-  if (raw.length == 8) return Color(int.parse(raw, radix: 16));
-  return null;
 }
 
 void _handleSubmit(BuildContext context) {
