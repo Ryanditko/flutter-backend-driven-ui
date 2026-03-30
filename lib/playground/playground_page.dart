@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 import '../core/models/screen_contract.dart';
+import '../core/validator/contract_validator.dart';
 import 'playground_api_client.dart';
 import 'widgets/json_editor_panel.dart';
 import 'widgets/preview_panel.dart';
@@ -23,8 +24,11 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
   final _editorController = TextEditingController();
   final _client = PlaygroundApiClient();
 
+  final _validator = ContractValidator();
+
   ScreenContract? _contract;
   String? _error;
+  List<String> _warnings = [];
   String? _selectedScreen;
   Timer? _debounce;
   bool _autoRender = true;
@@ -72,14 +76,17 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
 
     try {
       final contract = _client.parseContract(text);
+      final issues = _validator.validate(contract);
       setState(() {
         _contract = contract;
         _error = null;
+        _warnings = issues;
       });
     } catch (e) {
       setState(() {
         _contract = null;
         _error = e.toString();
+        _warnings = [];
       });
     }
   }
@@ -282,14 +289,28 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
     final lineCount = '\n'.allMatches(_editorController.text).length + 1;
     final charCount = _editorController.text.length;
     final isValid = _contract != null && _error == null;
+    final hasWarnings = _warnings.isNotEmpty;
 
     final Color barColor;
-    if (isValid) {
-      barColor = const Color(0xFF007ACC);
-    } else if (_error != null) {
+    if (_error != null) {
       barColor = Colors.red.shade700;
+    } else if (hasWarnings) {
+      barColor = Colors.orange.shade800;
+    } else if (isValid) {
+      barColor = const Color(0xFF007ACC);
     } else {
       barColor = Colors.grey.shade700;
+    }
+
+    final String statusLabel;
+    if (_error != null) {
+      statusLabel = 'Invalid JSON';
+    } else if (hasWarnings) {
+      statusLabel = '${_warnings.length} warning${_warnings.length > 1 ? 's' : ''}';
+    } else if (isValid) {
+      statusLabel = 'Valid contract';
+    } else {
+      statusLabel = 'Empty';
     }
 
     return Container(
@@ -298,20 +319,20 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
       child: Row(
         children: [
           Icon(
-            isValid
-                ? Icons.check_circle
-                : (_error != null ? Icons.error : Icons.circle_outlined),
+            _error != null
+                ? Icons.error
+                : (hasWarnings ? Icons.warning_amber : (isValid ? Icons.check_circle : Icons.circle_outlined)),
             size: 14,
             color: Colors.white70,
           ),
           const SizedBox(width: 6),
-          Text(
-            isValid
-                ? 'Valid contract'
-                : (_error != null ? 'Invalid JSON' : 'Empty'),
-            style: const TextStyle(color: Colors.white70, fontSize: 12),
+          Expanded(
+            child: Text(
+              statusLabel,
+              style: const TextStyle(color: Colors.white70, fontSize: 12),
+              overflow: TextOverflow.ellipsis,
+            ),
           ),
-          const Spacer(),
           Text(
             'Lines: $lineCount  |  Chars: $charCount',
             style: const TextStyle(color: Colors.white70, fontSize: 12),
