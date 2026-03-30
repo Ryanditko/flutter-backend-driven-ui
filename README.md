@@ -1,7 +1,8 @@
 <div align="center">
 
 # Server-Driven UI in Flutter
-<img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/b582c5e8-6756-4c8b-967c-798639c6c9fa" />
+<img width="1000" height="420" alt="image" src="https://github.com/user-attachments/assets/8fe18041-e381-4173-a075-d511a97049b3" />
+
 
 **Build dynamic screens from JSON contracts — zero hardcoded layouts.**
 
