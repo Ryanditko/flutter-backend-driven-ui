@@ -14,7 +14,7 @@
         {
           "type": "image",
           "props": {
-            "url": "https://picsum.photos/seed/avatar/150/150",
+            "url": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop",
             "width": 120,
             "height": 120,
             "borderRadius": 60
@@ -69,7 +69,7 @@
           "type": "button",
           "props": {
             "label": "Show Greeting",
-            "style": { "backgroundColor": "#03DAC5", "textColor": "#000000" }
+            "style": { "backgroundColor": "#D72F87", "textColor": "#FFFFFF" }
           },
           "action": { "type": "snackbar", "message": "Hello from the server! 👋" }
         },
@@ -78,7 +78,7 @@
           "type": "button",
           "props": {
             "label": "Back to Home",
-            "style": { "backgroundColor": "#6200EE", "textColor": "#FFFFFF" }
+            "style": { "backgroundColor": "#820AD1", "textColor": "#FFFFFF" }
           },
           "action": { "type": "navigate", "targetScreenId": "home" }
         }

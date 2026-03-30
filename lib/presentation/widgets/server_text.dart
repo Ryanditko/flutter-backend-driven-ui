@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../core/models/screen_contract.dart';
+import '../../core/utils/color_utils.dart';
 
 Widget buildServerText(
   ComponentNode node,
@@ -17,7 +18,7 @@ Widget buildServerText(
     style: TextStyle(
       fontSize: style?.fontSize,
       fontWeight: _parseFontWeight(style?.fontWeight),
-      color: _parseColor(style?.color),
+      color: parseHexColor(style?.color),
     ),
   );
 }
@@ -44,12 +45,4 @@ TextAlign? _parseTextAlign(String? a) {
     'left' => TextAlign.left,
     _ => null,
   };
-}
-
-Color? _parseColor(String? hex) {
-  if (hex == null || hex.isEmpty) return null;
-  final raw = hex.replaceFirst('#', '');
-  if (raw.length == 6) return Color(int.parse('FF$raw', radix: 16));
-  if (raw.length == 8) return Color(int.parse(raw, radix: 16));
-  return null;
 }

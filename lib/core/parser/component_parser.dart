@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
 
+import '../expression/expression_context.dart';
+import '../expression/template_engine.dart';
 import '../models/screen_contract.dart';
+import '../utils/color_utils.dart';
 import 'component_registry.dart';
-import '../../presentation/widgets/server_text.dart';
+import '../../presentation/widgets/server_badge.dart';
 import '../../presentation/widgets/server_button.dart';
+import '../../presentation/widgets/server_checkbox.dart';
+import '../../presentation/widgets/server_chip.dart';
+import '../../presentation/widgets/server_divider.dart';
+import '../../presentation/widgets/server_icon.dart';
 import '../../presentation/widgets/server_image.dart';
 import '../../presentation/widgets/server_input.dart';
+import '../../presentation/widgets/server_progress.dart';
+import '../../presentation/widgets/server_switch.dart';
+import '../../presentation/widgets/server_text.dart';
 import '../../presentation/widgets/unknown_component.dart';
 
 /// Callback signature for input field changes.
@@ -13,36 +23,104 @@ typedef InputChangeCallback = void Function(String id, String value);
 
 /// Recursively converts a [ComponentNode] tree into a Flutter widget tree.
 ///
-/// Layout nodes (column, row, container, listView, card) process their
-/// children; leaf nodes (text, button, image, input, spacer) render directly.
+/// Layout nodes (column, row, container, listView, card, stack, wrap) process
+/// their children; leaf nodes render directly.
+///
+/// When an [ExpressionContext] is provided, template strings in `props` are
+/// interpolated and the `visible` property on each node is evaluated.
 class ComponentParser {
   final ComponentRegistry _registry;
   final InputChangeCallback? onInputChanged;
+  final ExpressionContext expressionContext;
 
-  ComponentParser({this.onInputChanged})
-      : _registry = ComponentRegistry() {
+  ComponentParser({
+    this.onInputChanged,
+    ExpressionContext? expressionContext,
+  })  : expressionContext = expressionContext ?? const ExpressionContext(),
+        _registry = ComponentRegistry() {
     _registerDefaults();
   }
 
   void _registerDefaults() {
+    // Layout
     _registry.register('column', _buildColumn);
     _registry.register('row', _buildRow);
     _registry.register('container', _buildContainer);
     _registry.register('card', _buildCard);
     _registry.register('listView', _buildListView);
+    _registry.register('stack', _buildStack);
+    _registry.register('positioned', _buildPositioned);
+    _registry.register('wrap', _buildWrap);
     _registry.register('spacer', _buildSpacer);
+
+    // Leaf
     _registry.register('text', buildServerText);
     _registry.register('button', buildServerButton);
     _registry.register('image', buildServerImage);
     _registry.register('input', _buildInput);
+    _registry.register('divider', buildServerDivider);
+    _registry.register('icon', buildServerIcon);
+    _registry.register('chip', buildServerChip);
+    _registry.register('progress', buildServerProgress);
+    _registry.register('badge', buildServerBadge);
+
+    // Interactive
+    _registry.register('switch', _buildSwitch);
+    _registry.register('checkbox', _buildCheckbox);
   }
 
   Widget parse(ComponentNode node, BuildContext context) {
-    final builder = _registry.getBuilder(node.type);
-    if (builder != null) {
-      return builder(node, context, (child) => parse(child, context));
+    if (!TemplateEngine.evaluateVisibility(node.visible, expressionContext)) {
+      return const SizedBox.shrink();
     }
-    return buildUnknownComponent(node, context, (child) => parse(child, context));
+
+    final resolved = _interpolateProps(node);
+
+    final builder = _registry.getBuilder(resolved.type);
+    if (builder != null) {
+      return builder(resolved, context, (child) => parse(child, context));
+    }
+    return buildUnknownComponent(resolved, context, (child) => parse(child, context));
+  }
+
+  /// Walks through [props] and interpolates any string value that
+  /// contains `{{…}}` placeholders.
+  ComponentNode _interpolateProps(ComponentNode node) {
+    if (expressionContext.isEmpty) return node;
+
+    final newProps = _deepInterpolate(node.props);
+    if (identical(newProps, node.props)) return node;
+
+    return ComponentNode(
+      type: node.type,
+      id: node.id,
+      props: newProps,
+      children: node.children,
+      action: node.action,
+      visible: node.visible,
+    );
+  }
+
+  Map<String, dynamic> _deepInterpolate(Map<String, dynamic> map) {
+    var changed = false;
+    final result = <String, dynamic>{};
+
+    for (final entry in map.entries) {
+      final value = entry.value;
+      if (value is String && value.contains('{{')) {
+        final interpolated = TemplateEngine.interpolate(value, expressionContext);
+        result[entry.key] = interpolated;
+        if (interpolated != value) changed = true;
+      } else if (value is Map<String, dynamic>) {
+        final nested = _deepInterpolate(value);
+        result[entry.key] = nested;
+        if (!identical(nested, value)) changed = true;
+      } else {
+        result[entry.key] = value;
+      }
+    }
+
+    return changed ? result : map;
   }
 
   // -------------------------------------------------------------------------
@@ -98,7 +176,7 @@ class ComponentParser {
     Widget Function(ComponentNode) buildChild,
   ) {
     final padding = _parsePadding(node.props['padding']);
-    final bgColor = _parseColor(node.props['backgroundColor'] as String?);
+    final bgColor = parseHexColor(node.props['backgroundColor'] as String?);
 
     return Container(
       padding: padding,
@@ -151,6 +229,69 @@ class ComponentParser {
     );
   }
 
+  Widget _buildStack(
+    ComponentNode node,
+    BuildContext context,
+    Widget Function(ComponentNode) buildChild,
+  ) {
+    final alignment = _parseAlignment(node.props['alignment'] as String?);
+    final fit = (node.props['fit'] as String?) == 'expand'
+        ? StackFit.expand
+        : StackFit.loose;
+
+    return Stack(
+      alignment: alignment,
+      fit: fit,
+      children: node.children.map(buildChild).toList(),
+    );
+  }
+
+  Widget _buildPositioned(
+    ComponentNode node,
+    BuildContext context,
+    Widget Function(ComponentNode) buildChild,
+  ) {
+    final top = (node.props['top'] as num?)?.toDouble();
+    final bottom = (node.props['bottom'] as num?)?.toDouble();
+    final left = (node.props['left'] as num?)?.toDouble();
+    final right = (node.props['right'] as num?)?.toDouble();
+
+    final child = node.children.isNotEmpty
+        ? buildChild(node.children.first)
+        : const SizedBox.shrink();
+
+    return Positioned(
+      top: top,
+      bottom: bottom,
+      left: left,
+      right: right,
+      child: child,
+    );
+  }
+
+  Widget _buildWrap(
+    ComponentNode node,
+    BuildContext context,
+    Widget Function(ComponentNode) buildChild,
+  ) {
+    final spacing = (node.props['spacing'] as num?)?.toDouble() ?? 8;
+    final runSpacing = (node.props['runSpacing'] as num?)?.toDouble() ?? 8;
+    final alignment = _parseWrapAlignment(node.props['alignment'] as String?);
+    final padding = _parsePadding(node.props['padding']);
+
+    Widget wrap = Wrap(
+      spacing: spacing,
+      runSpacing: runSpacing,
+      alignment: alignment,
+      children: node.children.map(buildChild).toList(),
+    );
+
+    if (padding != null) {
+      wrap = Padding(padding: padding, child: wrap);
+    }
+    return wrap;
+  }
+
   Widget _buildSpacer(
     ComponentNode node,
     BuildContext context,
@@ -168,6 +309,22 @@ class ComponentParser {
     Widget Function(ComponentNode) buildChild,
   ) {
     return buildServerInput(node, context, buildChild, onChanged: onInputChanged);
+  }
+
+  Widget _buildSwitch(
+    ComponentNode node,
+    BuildContext context,
+    Widget Function(ComponentNode) buildChild,
+  ) {
+    return buildServerSwitch(node, context, buildChild, onChanged: onInputChanged);
+  }
+
+  Widget _buildCheckbox(
+    ComponentNode node,
+    BuildContext context,
+    Widget Function(ComponentNode) buildChild,
+  ) {
+    return buildServerCheckbox(node, context, buildChild, onChanged: onInputChanged);
   }
 
   // -------------------------------------------------------------------------
@@ -208,11 +365,30 @@ class ComponentParser {
     return null;
   }
 
-  static Color? _parseColor(String? hex) {
-    if (hex == null || hex.isEmpty) return null;
-    final raw = hex.replaceFirst('#', '');
-    if (raw.length == 6) return Color(int.parse('FF$raw', radix: 16));
-    if (raw.length == 8) return Color(int.parse(raw, radix: 16));
-    return null;
+  static AlignmentGeometry _parseAlignment(String? value) {
+    return switch (value) {
+      'topLeft' => Alignment.topLeft,
+      'topCenter' => Alignment.topCenter,
+      'topRight' => Alignment.topRight,
+      'centerLeft' => Alignment.centerLeft,
+      'center' => Alignment.center,
+      'centerRight' => Alignment.centerRight,
+      'bottomLeft' => Alignment.bottomLeft,
+      'bottomCenter' => Alignment.bottomCenter,
+      'bottomRight' => Alignment.bottomRight,
+      _ => AlignmentDirectional.topStart,
+    };
+  }
+
+  static WrapAlignment _parseWrapAlignment(String? value) {
+    return switch (value) {
+      'start' => WrapAlignment.start,
+      'center' => WrapAlignment.center,
+      'end' => WrapAlignment.end,
+      'spaceBetween' => WrapAlignment.spaceBetween,
+      'spaceAround' => WrapAlignment.spaceAround,
+      'spaceEvenly' => WrapAlignment.spaceEvenly,
+      _ => WrapAlignment.start,
+    };
   }
 }

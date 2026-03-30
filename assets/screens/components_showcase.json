@@ -1,0 +1,209 @@
+{
+  "schemaVersion": "1.0",
+  "screen": {
+    "id": "components_showcase",
+    "title": "Components Showcase",
+    "root": {
+      "type": "column",
+      "props": {
+        "crossAxisAlignment": "stretch",
+        "padding": { "top": 24, "bottom": 32, "left": 24, "right": 24 }
+      },
+      "children": [
+        {
+          "type": "text",
+          "props": {
+            "content": "All Components",
+            "style": { "fontSize": 24, "fontWeight": "bold" }
+          }
+        },
+        { "type": "spacer", "props": { "height": 8 } },
+        {
+          "type": "text",
+          "props": {
+            "content": "Every component the engine supports, in one screen.",
+            "style": { "fontSize": 14, "color": "#666666" }
+          }
+        },
+        { "type": "divider", "props": { "height": 32 } },
+
+        {
+          "type": "text",
+          "props": { "content": "Icons", "style": { "fontSize": 18, "fontWeight": "w600" } }
+        },
+        { "type": "spacer", "props": { "height": 8 } },
+        {
+          "type": "wrap",
+          "props": { "spacing": 16, "runSpacing": 8 },
+          "children": [
+            { "type": "icon", "props": { "name": "home", "size": 28, "color": "#820AD1" } },
+            { "type": "icon", "props": { "name": "person", "size": 28, "color": "#D72F87" } },
+            { "type": "icon", "props": { "name": "settings", "size": 28, "color": "#FF5722" } },
+            { "type": "icon", "props": { "name": "star", "size": 28, "color": "#FFC107" } },
+            { "type": "icon", "props": { "name": "favorite", "size": 28, "color": "#E91E63" } },
+            { "type": "icon", "props": { "name": "rocket_launch", "size": 28, "color": "#3A0066" } },
+            { "type": "icon", "props": { "name": "notifications", "size": 28, "color": "#820AD1" } }
+          ]
+        },
+
+        { "type": "divider", "props": { "height": 32 } },
+
+        {
+          "type": "text",
+          "props": { "content": "Chips", "style": { "fontSize": 18, "fontWeight": "w600" } }
+        },
+        { "type": "spacer", "props": { "height": 8 } },
+        {
+          "type": "wrap",
+          "props": { "spacing": 8, "runSpacing": 8 },
+          "children": [
+            { "type": "chip", "props": { "label": "Flutter", "backgroundColor": "#EDE7F6" } },
+            { "type": "chip", "props": { "label": "Dart", "backgroundColor": "#E8F5E9" } },
+            { "type": "chip", "props": { "label": "SDUI", "backgroundColor": "#FCE4EC" } },
+            { "type": "chip", "props": { "label": "Outlined", "outlined": true } }
+          ]
+        },
+
+        { "type": "divider", "props": { "height": 32 } },
+
+        {
+          "type": "text",
+          "props": { "content": "Progress Indicators", "style": { "fontSize": 18, "fontWeight": "w600" } }
+        },
+        { "type": "spacer", "props": { "height": 12 } },
+        { "type": "progress", "props": { "variant": "linear", "value": 0.7, "color": "#820AD1" } },
+        { "type": "spacer", "props": { "height": 16 } },
+        {
+          "type": "row",
+          "props": { "mainAxisAlignment": "spaceEvenly" },
+          "children": [
+            { "type": "progress", "props": { "variant": "circular", "size": 40, "color": "#D72F87" } },
+            { "type": "progress", "props": { "variant": "circular", "value": 0.65, "size": 40, "color": "#820AD1" } }
+          ]
+        },
+
+        { "type": "divider", "props": { "height": 32 } },
+
+        {
+          "type": "text",
+          "props": { "content": "Badge", "style": { "fontSize": 18, "fontWeight": "w600" } }
+        },
+        { "type": "spacer", "props": { "height": 8 } },
+        {
+          "type": "row",
+          "props": { "mainAxisAlignment": "start" },
+          "children": [
+            {
+              "type": "badge",
+              "props": { "label": "3", "backgroundColor": "#D72F87" },
+              "children": [
+                { "type": "icon", "props": { "name": "notifications", "size": 32 } }
+              ]
+            },
+            { "type": "spacer", "props": { "width": 32, "height": 1 } },
+            {
+              "type": "badge",
+              "props": { "small": true, "backgroundColor": "#4CAF50" },
+              "children": [
+                { "type": "icon", "props": { "name": "email", "size": 32 } }
+              ]
+            }
+          ]
+        },
+
+        { "type": "divider", "props": { "height": 32 } },
+
+        {
+          "type": "text",
+          "props": { "content": "Toggle Controls", "style": { "fontSize": 18, "fontWeight": "w600" } }
+        },
+        {
+          "type": "switch",
+          "id": "dark_mode",
+          "props": { "label": "Dark Mode", "subtitle": "Enable dark theme", "value": false }
+        },
+        {
+          "type": "checkbox",
+          "id": "agree_terms",
+          "props": { "label": "Accept Terms of Service", "value": false }
+        },
+
+        { "type": "divider", "props": { "height": 32 } },
+
+        {
+          "type": "text",
+          "props": { "content": "Stack Layout", "style": { "fontSize": 18, "fontWeight": "w600" } }
+        },
+        { "type": "spacer", "props": { "height": 8 } },
+        {
+          "type": "container",
+          "props": { "backgroundColor": "#F5F0EB", "padding": 16 },
+          "children": [
+            {
+              "type": "stack",
+              "props": { "alignment": "center" },
+              "children": [
+                {
+                  "type": "image",
+                  "props": {
+                    "url": "https://images.unsplash.com/photo-1557683316-973673baf926?w=400&h=200&fit=crop",
+                    "height": 150,
+                    "fit": "cover",
+                    "borderRadius": 12
+                  }
+                },
+                {
+                  "type": "container",
+                  "props": { "backgroundColor": "#CC000000", "padding": 8 },
+                  "children": [
+                    {
+                      "type": "text",
+                      "props": {
+                        "content": "Overlaid Text",
+                        "style": { "color": "#FFFFFF", "fontWeight": "bold", "fontSize": 16 }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+
+        { "type": "divider", "props": { "height": 32 } },
+
+        {
+          "type": "text",
+          "props": { "content": "Actions", "style": { "fontSize": 18, "fontWeight": "w600" } }
+        },
+        { "type": "spacer", "props": { "height": 8 } },
+        {
+          "type": "button",
+          "props": {
+            "label": "Show Dialog",
+            "style": { "backgroundColor": "#820AD1", "textColor": "#FFFFFF" }
+          },
+          "action": { "type": "showDialog", "targetScreenId": "Hello!", "message": "This dialog was triggered from a JSON contract." }
+        },
+        { "type": "spacer", "props": { "height": 8 } },
+        {
+          "type": "button",
+          "props": {
+            "label": "Copy to Clipboard",
+            "style": { "backgroundColor": "#D72F87", "textColor": "#FFFFFF" }
+          },
+          "action": { "type": "copyToClipboard", "message": "Hello from Server-Driven UI!" }
+        },
+        { "type": "spacer", "props": { "height": 8 } },
+        {
+          "type": "button",
+          "props": {
+            "label": "Back to Home",
+            "style": { "backgroundColor": "#E0E0E0", "textColor": "#333333" }
+          },
+          "action": { "type": "navigate", "targetScreenId": "home" }
+        }
+      ]
+    }
+  }
+}

@@ -9,7 +9,14 @@ import '../core/models/screen_contract.dart';
 class PlaygroundApiClient {
   static const _basePath = 'assets/screens';
 
-  static const availableScreens = ['home', 'profile', 'form'];
+  static const availableScreens = [
+    'home',
+    'profile',
+    'form',
+    'components_showcase',
+    'expressions_demo',
+    'theme_demo',
+  ];
 
   ScreenContract parseContract(String jsonString) {
     final json = jsonDecode(jsonString) as Map<String, dynamic>;
@@ -48,7 +55,7 @@ class PlaygroundApiClient {
                 'props': {
                   'label': 'Tap me',
                   'style': {
-                    'backgroundColor': '#6200EE',
+                    'backgroundColor': '#820AD1',
                     'textColor': '#FFFFFF',
                   },
                 },

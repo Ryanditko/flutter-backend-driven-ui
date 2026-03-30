@@ -105,12 +105,17 @@ class ComponentNode {
   final List<ComponentNode> children;
   final ActionDef? action;
 
+  /// Controls conditional rendering. Accepts a literal `bool`, a string
+  /// `"true"/"false"`, or a template expression like `"{{isLoggedIn}}"`.
+  final dynamic visible;
+
   const ComponentNode({
     required this.type,
     this.id,
     this.props = const {},
     this.children = const [],
     this.action,
+    this.visible,
   });
 
   factory ComponentNode.fromJson(Map<String, dynamic> json) {
@@ -125,6 +130,7 @@ class ComponentNode {
       action: json['action'] != null
           ? ActionDef.fromJson(json['action'] as Map<String, dynamic>)
           : null,
+      visible: json['visible'],
     );
   }
 }
@@ -157,12 +163,25 @@ class ScreenContract {
   final String schemaVersion;
   final Screen screen;
 
-  const ScreenContract({required this.schemaVersion, required this.screen});
+  /// Optional initial variable bindings for the expression engine.
+  final Map<String, dynamic> context;
+
+  /// Optional per-screen theme overrides (colors, typography, brightness).
+  final Map<String, dynamic>? theme;
+
+  const ScreenContract({
+    required this.schemaVersion,
+    required this.screen,
+    this.context = const {},
+    this.theme,
+  });
 
   factory ScreenContract.fromJson(Map<String, dynamic> json) {
     return ScreenContract(
       schemaVersion: json['schemaVersion'] as String,
       screen: Screen.fromJson(json['screen'] as Map<String, dynamic>),
+      context: (json['context'] as Map<String, dynamic>?) ?? {},
+      theme: json['theme'] as Map<String, dynamic>?,
     );
   }
 }

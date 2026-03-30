@@ -1,0 +1,126 @@
+{
+  "schemaVersion": "1.0",
+  "theme": {
+    "brightness": "dark",
+    "primaryColor": "#820AD1",
+    "backgroundColor": "#1A1A2E",
+    "surfaceColor": "#16213E"
+  },
+  "screen": {
+    "id": "theme_demo",
+    "title": "Dark Theme Demo",
+    "root": {
+      "type": "column",
+      "props": {
+        "crossAxisAlignment": "stretch",
+        "padding": { "top": 24, "bottom": 32, "left": 24, "right": 24 }
+      },
+      "children": [
+        {
+          "type": "text",
+          "props": {
+            "content": "Dynamic Theming",
+            "style": { "fontSize": 24, "fontWeight": "bold", "color": "#FFFFFF" }
+          }
+        },
+        { "type": "spacer", "props": { "height": 8 } },
+        {
+          "type": "text",
+          "props": {
+            "content": "This screen applies a dark theme defined in the JSON contract. Colors, surfaces, and brightness are all server-controlled.",
+            "style": { "fontSize": 14, "color": "#AAAAAA" }
+          }
+        },
+        { "type": "divider", "props": { "height": 32, "color": "#333355" } },
+        {
+          "type": "card",
+          "props": {
+            "padding": { "top": 16, "bottom": 16, "left": 16, "right": 16 },
+            "elevation": 4
+          },
+          "children": [
+            {
+              "type": "column",
+              "props": { "crossAxisAlignment": "start" },
+              "children": [
+                {
+                  "type": "row",
+                  "children": [
+                    { "type": "icon", "props": { "name": "dark_mode", "size": 24, "color": "#820AD1" } },
+                    { "type": "spacer", "props": { "width": 12, "height": 1 } },
+                    {
+                      "type": "text",
+                      "props": {
+                        "content": "Dark Surface Card",
+                        "style": { "fontSize": 18, "fontWeight": "w600", "color": "#FFFFFF" }
+                      }
+                    }
+                  ]
+                },
+                { "type": "spacer", "props": { "height": 12 } },
+                {
+                  "type": "text",
+                  "props": {
+                    "content": "Cards inherit the surface color from the theme contract. The dark background (#16213E) creates a sleek, modern appearance.",
+                    "style": { "fontSize": 14, "color": "#CCCCCC" }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        { "type": "spacer", "props": { "height": 16 } },
+        {
+          "type": "text",
+          "props": { "content": "Progress", "style": { "fontSize": 16, "fontWeight": "w600", "color": "#FFFFFF" } }
+        },
+        { "type": "spacer", "props": { "height": 8 } },
+        { "type": "progress", "props": { "variant": "linear", "value": 0.85, "color": "#820AD1", "trackColor": "#333355" } },
+        { "type": "spacer", "props": { "height": 16 } },
+        {
+          "type": "row",
+          "props": { "mainAxisAlignment": "spaceEvenly" },
+          "children": [
+            { "type": "progress", "props": { "variant": "circular", "value": 0.5, "size": 48, "color": "#D72F87" } },
+            { "type": "progress", "props": { "variant": "circular", "size": 48, "color": "#820AD1" } }
+          ]
+        },
+        { "type": "divider", "props": { "height": 32, "color": "#333355" } },
+        {
+          "type": "text",
+          "props": { "content": "Icons on Dark", "style": { "fontSize": 16, "fontWeight": "w600", "color": "#FFFFFF" } }
+        },
+        { "type": "spacer", "props": { "height": 8 } },
+        {
+          "type": "wrap",
+          "props": { "spacing": 16, "runSpacing": 8 },
+          "children": [
+            { "type": "icon", "props": { "name": "rocket_launch", "size": 32, "color": "#820AD1" } },
+            { "type": "icon", "props": { "name": "star", "size": 32, "color": "#FFC107" } },
+            { "type": "icon", "props": { "name": "favorite", "size": 32, "color": "#D72F87" } },
+            { "type": "icon", "props": { "name": "science", "size": 32, "color": "#4CAF50" } },
+            { "type": "icon", "props": { "name": "code", "size": 32, "color": "#FFFFFF" } }
+          ]
+        },
+        { "type": "divider", "props": { "height": 32, "color": "#333355" } },
+        {
+          "type": "button",
+          "props": {
+            "label": "Nubank Purple Action",
+            "style": { "backgroundColor": "#820AD1", "textColor": "#FFFFFF" }
+          },
+          "action": { "type": "snackbar", "message": "Dark theme action triggered!" }
+        },
+        { "type": "spacer", "props": { "height": 8 } },
+        {
+          "type": "button",
+          "props": {
+            "label": "Back to Home",
+            "style": { "backgroundColor": "#333355", "textColor": "#FFFFFF" }
+          },
+          "action": { "type": "navigate", "targetScreenId": "home" }
+        }
+      ]
+    }
+  }
+}

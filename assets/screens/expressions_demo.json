@@ -1,0 +1,131 @@
+{
+  "schemaVersion": "1.0",
+  "context": {
+    "user": {
+      "name": "Jane Doe",
+      "email": "jane@example.com",
+      "plan": "Premium"
+    },
+    "notifications": 5,
+    "isPremium": true,
+    "showBanner": true,
+    "showSecret": false
+  },
+  "screen": {
+    "id": "expressions_demo",
+    "title": "Expressions Demo",
+    "root": {
+      "type": "column",
+      "props": {
+        "crossAxisAlignment": "stretch",
+        "padding": { "top": 24, "bottom": 32, "left": 24, "right": 24 }
+      },
+      "children": [
+        {
+          "type": "text",
+          "props": {
+            "content": "Hello, {{user.name}}!",
+            "style": { "fontSize": 24, "fontWeight": "bold" }
+          }
+        },
+        { "type": "spacer", "props": { "height": 4 } },
+        {
+          "type": "text",
+          "props": {
+            "content": "Email: {{user.email}}  •  Plan: {{user.plan}}",
+            "style": { "fontSize": 14, "color": "#666666" }
+          }
+        },
+        { "type": "divider", "props": { "height": 32 } },
+        {
+          "type": "text",
+          "props": {
+            "content": "Conditional Visibility",
+            "style": { "fontSize": 18, "fontWeight": "w600" }
+          }
+        },
+        { "type": "spacer", "props": { "height": 8 } },
+        {
+          "type": "card",
+          "visible": "{{showBanner}}",
+          "props": {
+            "padding": { "top": 16, "bottom": 16, "left": 16, "right": 16 },
+            "elevation": 2
+          },
+          "children": [
+            {
+              "type": "row",
+              "children": [
+                { "type": "icon", "props": { "name": "celebration", "color": "#820AD1", "size": 28 } },
+                { "type": "spacer", "props": { "width": 12, "height": 1 } },
+                {
+                  "type": "text",
+                  "props": {
+                    "content": "This banner is visible because showBanner = true",
+                    "style": { "fontSize": 14 }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        { "type": "spacer", "props": { "height": 8 } },
+        {
+          "type": "card",
+          "visible": "{{showSecret}}",
+          "props": {
+            "padding": { "top": 16, "bottom": 16, "left": 16, "right": 16 }
+          },
+          "children": [
+            {
+              "type": "text",
+              "props": {
+                "content": "You should NOT see this — showSecret is false",
+                "style": { "fontSize": 14, "color": "#FF0000" }
+              }
+            }
+          ]
+        },
+        { "type": "spacer", "props": { "height": 8 } },
+        {
+          "type": "container",
+          "visible": "{{isPremium}}",
+          "props": { "backgroundColor": "#FFF3E0", "padding": 12 },
+          "children": [
+            {
+              "type": "row",
+              "children": [
+                { "type": "icon", "props": { "name": "star", "color": "#FF9800", "size": 20 } },
+                { "type": "spacer", "props": { "width": 8, "height": 1 } },
+                {
+                  "type": "text",
+                  "props": {
+                    "content": "Premium member — visible because isPremium = true",
+                    "style": { "fontSize": 13, "color": "#E65100" }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        { "type": "divider", "props": { "height": 32 } },
+        {
+          "type": "text",
+          "props": {
+            "content": "You have {{notifications}} unread notifications.",
+            "style": { "fontSize": 16 }
+          }
+        },
+        { "type": "spacer", "props": { "height": 16 } },
+        {
+          "type": "button",
+          "props": {
+            "label": "Back to Home",
+            "style": { "backgroundColor": "#820AD1", "textColor": "#FFFFFF" }
+          },
+          "action": { "type": "navigate", "targetScreenId": "home" }
+        }
+      ]
+    }
+  }
+}

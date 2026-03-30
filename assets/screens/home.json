@@ -50,7 +50,7 @@
                   "type": "button",
                   "props": {
                     "label": "View Profile",
-                    "style": { "backgroundColor": "#6200EE", "textColor": "#FFFFFF" }
+                    "style": { "backgroundColor": "#820AD1", "textColor": "#FFFFFF" }
                   },
                   "action": { "type": "navigate", "targetScreenId": "profile" }
                 },
@@ -59,9 +59,36 @@
                   "type": "button",
                   "props": {
                     "label": "Open Form Demo",
-                    "style": { "backgroundColor": "#03DAC5", "textColor": "#000000" }
+                    "style": { "backgroundColor": "#D72F87", "textColor": "#FFFFFF" }
                   },
                   "action": { "type": "navigate", "targetScreenId": "form" }
+                },
+                { "type": "spacer", "props": { "height": 8 } },
+                {
+                  "type": "button",
+                  "props": {
+                    "label": "Components Showcase",
+                    "style": { "backgroundColor": "#3A0066", "textColor": "#FFFFFF" }
+                  },
+                  "action": { "type": "navigate", "targetScreenId": "components_showcase" }
+                },
+                { "type": "spacer", "props": { "height": 8 } },
+                {
+                  "type": "button",
+                  "props": {
+                    "label": "Expressions Demo",
+                    "style": { "backgroundColor": "#F5F0EB", "textColor": "#820AD1" }
+                  },
+                  "action": { "type": "navigate", "targetScreenId": "expressions_demo" }
+                },
+                { "type": "spacer", "props": { "height": 8 } },
+                {
+                  "type": "button",
+                  "props": {
+                    "label": "Theme Demo (Dark)",
+                    "style": { "backgroundColor": "#1A1A2E", "textColor": "#FFFFFF" }
+                  },
+                  "action": { "type": "navigate", "targetScreenId": "theme_demo" }
                 }
               ]
             }
@@ -71,7 +98,7 @@
         {
           "type": "image",
           "props": {
-            "url": "https://picsum.photos/seed/bdc/600/200",
+            "url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=200&fit=crop",
             "height": 200,
             "fit": "cover",
             "borderRadius": 12

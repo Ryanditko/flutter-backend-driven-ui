@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'core/network/api_client.dart';
 import 'core/network/local_api_client.dart';
+import 'core/theme/app_colors.dart';
 import 'playground/playground_page.dart';
 import 'presentation/dynamic_screen_page.dart';
 import 'presentation/landing_page.dart';
@@ -38,7 +39,11 @@ class _BdcAppState extends State<BdcApp> {
       title: 'Server-Driven UI',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF6200EE)),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: AppColors.primary,
+          secondary: AppColors.accent,
+        ),
+        scaffoldBackgroundColor: AppColors.background,
         useMaterial3: true,
       ),
       initialRoute: '/',

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../core/expression/expression_context.dart';
 import '../../core/models/screen_contract.dart';
 import '../../core/parser/component_parser.dart';
 import '../../presentation/widgets/server_button.dart';
@@ -78,6 +79,7 @@ class _PreviewPanelState extends InputCollectorState<PreviewPanel> {
   Widget _buildPreview(BuildContext context, ScreenContract contract) {
     final parser = ComponentParser(
       onInputChanged: (id, value) => _inputValues[id] = value,
+      expressionContext: ExpressionContext(contract.context),
     );
 
     return Container(
