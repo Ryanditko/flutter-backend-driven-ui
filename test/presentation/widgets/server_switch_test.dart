@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_backend_driven_ui/core/models/screen_contract.dart';
-import 'package:flutter_backend_driven_ui/core/parser/component_parser.dart';
 import 'package:flutter_backend_driven_ui/presentation/widgets/server_switch.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -37,10 +36,10 @@ void main() {
     String? seenId;
     String? seenValue;
 
-    final InputChangeCallback onChanged = (id, value) {
+    void onChanged(String id, String value) {
       seenId = id;
       seenValue = value;
-    };
+    }
 
     final node = ComponentNode(
       type: 'switch',

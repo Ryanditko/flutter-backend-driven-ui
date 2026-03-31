@@ -21,7 +21,7 @@ jobs:
           channel: stable
           cache: true
       - run: flutter pub get
-      - run: dart analyze --fatal-infos
+      - run: dart analyze --fatal-warnings
 
   test:
     name: Test

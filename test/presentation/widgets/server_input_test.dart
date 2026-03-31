@@ -34,10 +34,10 @@ void main() {
     String? seenId;
     String? seenValue;
 
-    final InputChangeCallback onChanged = (id, value) {
+    void onChanged(String id, String value) {
       seenId = id;
       seenValue = value;
-    };
+    }
 
     final node = ComponentNode(
       type: 'input',
