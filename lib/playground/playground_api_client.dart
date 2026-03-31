@@ -14,6 +14,7 @@ class PlaygroundApiClient {
     'profile',
     'form',
     'components_showcase',
+    'new_components',
     'expressions_demo',
     'theme_demo',
   ];

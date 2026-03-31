@@ -1,6 +1,8 @@
 export 'expression/expression_context.dart';
 export 'expression/template_engine.dart';
+export 'layout/breakpoints.dart';
 export 'models/screen_contract.dart';
+export 'navigation/page_transitions.dart';
 export 'network/api_client.dart';
 export 'network/cached_api_client.dart';
 export 'network/http_api_client.dart';

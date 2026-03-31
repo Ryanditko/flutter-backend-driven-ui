@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'core/navigation/page_transitions.dart';
 import 'core/network/api_client.dart';
 import 'core/network/local_api_client.dart';
 import 'core/theme/app_colors.dart';
@@ -51,33 +52,34 @@ class _BdcAppState extends State<BdcApp> {
         final uri = Uri.parse(settings.name ?? '');
 
         if (uri.path == '/') {
-          return MaterialPageRoute(
+          return FadePageRoute(
             settings: settings,
-            builder: (_) => const LandingPage(),
+            page: const LandingPage(),
           );
         }
 
         if (uri.path == '/playground') {
-          return MaterialPageRoute(
+          return SlideUpPageRoute(
             settings: settings,
-            builder: (_) => const PlaygroundPage(),
+            page: const PlaygroundPage(),
           );
         }
 
         if (uri.pathSegments.length == 2 &&
             uri.pathSegments.first == 'screen') {
           final screenId = uri.pathSegments[1];
-          return MaterialPageRoute(
+          return SlideHorizontalPageRoute(
             settings: settings,
-            builder: (_) => DynamicScreenPage(
+            page: DynamicScreenPage(
               screenId: screenId,
               apiClient: _apiClient,
             ),
           );
         }
 
-        return MaterialPageRoute(
-          builder: (_) => const LandingPage(),
+        return FadePageRoute(
+          settings: settings,
+          page: const LandingPage(),
         );
       },
     );

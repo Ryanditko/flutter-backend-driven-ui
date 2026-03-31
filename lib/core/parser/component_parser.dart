@@ -7,14 +7,19 @@ import '../utils/color_utils.dart';
 import 'component_registry.dart';
 import '../../presentation/widgets/server_badge.dart';
 import '../../presentation/widgets/server_button.dart';
+import '../../presentation/widgets/server_carousel.dart';
 import '../../presentation/widgets/server_checkbox.dart';
 import '../../presentation/widgets/server_chip.dart';
 import '../../presentation/widgets/server_divider.dart';
+import '../../presentation/widgets/server_dropdown.dart';
+import '../../presentation/widgets/server_expanded.dart';
 import '../../presentation/widgets/server_icon.dart';
 import '../../presentation/widgets/server_image.dart';
 import '../../presentation/widgets/server_input.dart';
 import '../../presentation/widgets/server_progress.dart';
+import '../../presentation/widgets/server_responsive.dart';
 import '../../presentation/widgets/server_switch.dart';
+import '../../presentation/widgets/server_tab_bar.dart';
 import '../../presentation/widgets/server_text.dart';
 import '../../presentation/widgets/unknown_component.dart';
 
@@ -52,6 +57,9 @@ class ComponentParser {
     _registry.register('positioned', _buildPositioned);
     _registry.register('wrap', _buildWrap);
     _registry.register('spacer', _buildSpacer);
+    _registry.register('responsive', buildServerResponsive);
+    _registry.register('expanded', buildServerExpanded);
+    _registry.register('flexible', buildServerFlexible);
 
     // Leaf
     _registry.register('text', buildServerText);
@@ -64,9 +72,12 @@ class ComponentParser {
     _registry.register('progress', buildServerProgress);
     _registry.register('badge', buildServerBadge);
 
-    // Interactive
+    // Interactive / composite
     _registry.register('switch', _buildSwitch);
     _registry.register('checkbox', _buildCheckbox);
+    _registry.register('dropdown', _buildDropdown);
+    _registry.register('tabBar', buildServerTabBar);
+    _registry.register('carousel', buildServerCarousel);
   }
 
   Widget parse(ComponentNode node, BuildContext context) {
@@ -325,6 +336,14 @@ class ComponentParser {
     Widget Function(ComponentNode) buildChild,
   ) {
     return buildServerCheckbox(node, context, buildChild, onChanged: onInputChanged);
+  }
+
+  Widget _buildDropdown(
+    ComponentNode node,
+    BuildContext context,
+    Widget Function(ComponentNode) buildChild,
+  ) {
+    return buildServerDropdown(node, context, buildChild, onChanged: onInputChanged);
   }
 
   // -------------------------------------------------------------------------

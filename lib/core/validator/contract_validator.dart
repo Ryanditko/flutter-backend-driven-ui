@@ -8,12 +8,13 @@ class ContractValidator {
   static const supportedSchemaVersions = {'1.0'};
 
   static const _layoutTypes = {
-    'column', 'row', 'container', 'card', 'listView', 'stack', 'positioned', 'wrap',
+    'column', 'row', 'container', 'card', 'listView', 'stack', 'positioned',
+    'wrap', 'responsive', 'expanded', 'flexible', 'tabBar', 'carousel',
   };
 
   static const _leafTypes = {
     'text', 'button', 'image', 'input', 'spacer', 'divider', 'icon',
-    'chip', 'progress', 'badge', 'switch', 'checkbox',
+    'chip', 'progress', 'badge', 'switch', 'checkbox', 'dropdown',
   };
 
   static const _actionTypes = {
