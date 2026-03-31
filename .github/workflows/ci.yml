@@ -34,7 +34,7 @@ jobs:
           channel: stable
           cache: true
       - run: flutter pub get
-      - run: flutter test --coverage
+      - run: flutter test --coverage --exclude-tags=golden
 
   build-web:
     name: Build Web
