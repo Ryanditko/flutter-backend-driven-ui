@@ -76,6 +76,15 @@
                 {
                   "type": "button",
                   "props": {
+                    "label": "New Components",
+                    "style": { "backgroundColor": "#FF5722", "textColor": "#FFFFFF" }
+                  },
+                  "action": { "type": "navigate", "targetScreenId": "new_components" }
+                },
+                { "type": "spacer", "props": { "height": 8 } },
+                {
+                  "type": "button",
+                  "props": {
                     "label": "Expressions Demo",
                     "style": { "backgroundColor": "#F5F0EB", "textColor": "#820AD1" }
                   },

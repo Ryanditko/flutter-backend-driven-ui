@@ -1,0 +1,190 @@
+{
+  "schemaVersion": "1.0",
+  "screen": {
+    "id": "new_components",
+    "title": "New Components",
+    "root": {
+      "type": "column",
+      "props": {
+        "crossAxisAlignment": "stretch",
+        "padding": { "top": 24, "bottom": 32, "left": 24, "right": 24 }
+      },
+      "children": [
+        {
+          "type": "text",
+          "props": {
+            "content": "Dropdown, Tabs & Carousel",
+            "style": { "fontSize": 24, "fontWeight": "bold" }
+          }
+        },
+        { "type": "spacer", "props": { "height": 4 } },
+        {
+          "type": "text",
+          "props": {
+            "content": "New interactive components driven entirely by JSON.",
+            "style": { "fontSize": 14, "color": "#666666" }
+          }
+        },
+
+        { "type": "divider", "props": { "height": 32 } },
+
+        {
+          "type": "text",
+          "props": { "content": "Dropdown", "style": { "fontSize": 18, "fontWeight": "w600" } }
+        },
+        { "type": "spacer", "props": { "height": 8 } },
+        {
+          "type": "dropdown",
+          "id": "language",
+          "props": {
+            "label": "Favorite Language",
+            "hint": "Pick one",
+            "filled": true,
+            "options": [
+              { "value": "dart", "label": "Dart" },
+              { "value": "kotlin", "label": "Kotlin" },
+              { "value": "swift", "label": "Swift" },
+              { "value": "typescript", "label": "TypeScript" }
+            ]
+          }
+        },
+
+        { "type": "divider", "props": { "height": 32 } },
+
+        {
+          "type": "text",
+          "props": { "content": "Tab Bar", "style": { "fontSize": 18, "fontWeight": "w600" } }
+        },
+        { "type": "spacer", "props": { "height": 8 } },
+        {
+          "type": "tabBar",
+          "props": {
+            "tabs": ["Overview", "Features", "Setup"],
+            "indicatorColor": "#820AD1"
+          },
+          "children": [
+            {
+              "type": "column",
+              "props": { "padding": 16, "crossAxisAlignment": "stretch" },
+              "children": [
+                {
+                  "type": "text",
+                  "props": {
+                    "content": "A server-driven UI engine that builds Flutter screens from JSON contracts at runtime.",
+                    "style": { "fontSize": 14 }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "column",
+              "props": { "padding": 16 },
+              "children": [
+                { "type": "chip", "props": { "label": "Responsive layouts", "backgroundColor": "#EDE7F6" } },
+                { "type": "spacer", "props": { "height": 8 } },
+                { "type": "chip", "props": { "label": "Expression engine", "backgroundColor": "#E8F5E9" } },
+                { "type": "spacer", "props": { "height": 8 } },
+                { "type": "chip", "props": { "label": "Theme overrides", "backgroundColor": "#FFF3E0" } }
+              ]
+            },
+            {
+              "type": "column",
+              "props": { "padding": 16, "crossAxisAlignment": "stretch" },
+              "children": [
+                {
+                  "type": "text",
+                  "props": {
+                    "content": "1. Add the dependency\n2. Define your JSON contract\n3. Point the engine at your API",
+                    "style": { "fontSize": 14 }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+
+        { "type": "divider", "props": { "height": 32 } },
+
+        {
+          "type": "text",
+          "props": { "content": "Carousel", "style": { "fontSize": 18, "fontWeight": "w600" } }
+        },
+        { "type": "spacer", "props": { "height": 8 } },
+        {
+          "type": "carousel",
+          "props": { "height": 180 },
+          "children": [
+            {
+              "type": "card",
+              "props": { "padding": 24, "elevation": 2 },
+              "children": [
+                {
+                  "type": "icon",
+                  "props": { "name": "palette", "size": 40, "color": "#820AD1" }
+                },
+                { "type": "spacer", "props": { "height": 12 } },
+                {
+                  "type": "text",
+                  "props": { "content": "Theming", "style": { "fontSize": 18, "fontWeight": "bold" } }
+                },
+                {
+                  "type": "text",
+                  "props": { "content": "Override colors and typography per screen.", "style": { "fontSize": 13, "color": "#666666" } }
+                }
+              ]
+            },
+            {
+              "type": "card",
+              "props": { "padding": 24, "elevation": 2 },
+              "children": [
+                {
+                  "type": "icon",
+                  "props": { "name": "bolt", "size": 40, "color": "#D72F87" }
+                },
+                { "type": "spacer", "props": { "height": 12 } },
+                {
+                  "type": "text",
+                  "props": { "content": "Expressions", "style": { "fontSize": 18, "fontWeight": "bold" } }
+                },
+                {
+                  "type": "text",
+                  "props": { "content": "Interpolate runtime variables into any prop.", "style": { "fontSize": 13, "color": "#666666" } }
+                }
+              ]
+            },
+            {
+              "type": "card",
+              "props": { "padding": 24, "elevation": 2 },
+              "children": [
+                {
+                  "type": "icon",
+                  "props": { "name": "devices", "size": 40, "color": "#FF5722" }
+                },
+                { "type": "spacer", "props": { "height": 12 } },
+                {
+                  "type": "text",
+                  "props": { "content": "Responsive", "style": { "fontSize": 18, "fontWeight": "bold" } }
+                },
+                {
+                  "type": "text",
+                  "props": { "content": "Adapt layouts across compact, medium & expanded.", "style": { "fontSize": 13, "color": "#666666" } }
+                }
+              ]
+            }
+          ]
+        },
+
+        { "type": "divider", "props": { "height": 32 } },
+
+        {
+          "type": "button",
+          "props": {
+            "label": "Back to Home",
+            "style": { "backgroundColor": "#E0E0E0", "textColor": "#333333" }
+          },
+          "action": { "type": "navigate", "targetScreenId": "home" }
+        }
+      ]
+    }
+  }
+}
