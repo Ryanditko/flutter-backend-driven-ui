@@ -14,7 +14,7 @@
 [![CI](https://github.com/Ryanditko/flutter-backend-driven-ui/actions/workflows/ci.yml/badge.svg)](https://github.com/Ryanditko/flutter-backend-driven-ui/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/Ryanditko/flutter-backend-driven-ui/graph/badge.svg)](https://codecov.io/gh/Ryanditko/flutter-backend-driven-ui)
 
-[Live Demo](https://ryanditko.github.io/flutter-backend-driven-ui/) · [Architecture Docs](docs/ARCHITECTURE.md) · [Mock Server](server/README.md)
+[Architecture Docs](docs/ARCHITECTURE.md) · [Mock Server](server/README.md)
 
 </div>
 
