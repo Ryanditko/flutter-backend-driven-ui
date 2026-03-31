@@ -52,3 +52,7 @@ app.*.map.json
 /linux/
 /macos/
 /windows/
+
+# Server dependencies
+server/.dart_tool/
+server/pubspec.lock
