@@ -3,7 +3,7 @@ import 'package:flutter_backend_driven_ui/presentation/landing_page.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  testWidgets('landing page golden', (tester) async {
+  testWidgets('landing page golden', tags: 'golden', (tester) async {
     tester.view.physicalSize = const Size(800, 1200);
     tester.view.devicePixelRatio = 1.0;
     addTearDown(tester.view.resetPhysicalSize);
