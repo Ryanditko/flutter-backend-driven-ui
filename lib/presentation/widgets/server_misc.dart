@@ -15,10 +15,13 @@ Widget buildServerPlaceholder(
   final width = (node.props['width'] as num?)?.toDouble() ?? 400;
   final height = (node.props['height'] as num?)?.toDouble() ?? 400;
 
-  return SizedBox(
-    width: width,
-    height: height,
-    child: Placeholder(color: color, strokeWidth: strokeWidth),
+  return Semantics(
+    label: 'Placeholder',
+    child: SizedBox(
+      width: width,
+      height: height,
+      child: Placeholder(color: color, strokeWidth: strokeWidth),
+    ),
   );
 }
 
@@ -34,18 +37,22 @@ Widget buildServerCircleAvatar(
   final label = node.props['label'] as String?;
   final icon = node.props['icon'] as String?;
 
-  return CircleAvatar(
-    radius: radius,
-    backgroundColor: bgColor,
-    foregroundColor: fgColor,
-    backgroundImage: imageUrl != null ? NetworkImage(imageUrl) : null,
-    child: imageUrl == null
-        ? (label != null
-            ? Text(label)
-            : icon != null
-                ? Icon(resolveIcon(icon))
-                : null)
-        : null,
+  return Semantics(
+    label: label ?? 'Avatar',
+    image: imageUrl != null,
+    child: CircleAvatar(
+      radius: radius,
+      backgroundColor: bgColor,
+      foregroundColor: fgColor,
+      backgroundImage: imageUrl != null ? NetworkImage(imageUrl) : null,
+      child: imageUrl == null
+          ? (label != null
+              ? Text(label)
+              : icon != null
+                  ? Icon(resolveIcon(icon))
+                  : null)
+          : null,
+    ),
   );
 }
 
