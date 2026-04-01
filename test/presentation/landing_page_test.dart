@@ -11,9 +11,8 @@ class _RecordingNavigatorObserver extends NavigatorObserver {
   }
 }
 
-/// Default test viewport is too short; [LandingPage] column needs more height.
 void _bindTallSurface(WidgetTester tester) {
-  tester.view.physicalSize = const Size(800, 1200);
+  tester.view.physicalSize = const Size(800, 1400);
   tester.view.devicePixelRatio = 1.0;
   addTearDown(tester.view.resetPhysicalSize);
   addTearDown(tester.view.resetDevicePixelRatio);
@@ -65,7 +64,7 @@ void main() {
     expect(observer.pushCount, greaterThan(0));
   });
 
-  testWidgets('renders version chip v1.0', (tester) async {
+  testWidgets('renders stats row with component count', (tester) async {
     _bindTallSurface(tester);
     await tester.pumpWidget(
       MaterialApp(
@@ -75,11 +74,11 @@ void main() {
       ),
     );
 
-    expect(find.text('v1.0'), findsOneWidget);
+    expect(find.text('103'), findsOneWidget);
+    expect(find.text('Components'), findsOneWidget);
   });
 
-  testWidgets('renders footer Built with Flutter + Material Design 3',
-      (tester) async {
+  testWidgets('renders footer with Ryanditko attribution', (tester) async {
     _bindTallSurface(tester);
     await tester.pumpWidget(
       MaterialApp(
@@ -89,9 +88,6 @@ void main() {
       ),
     );
 
-    expect(
-      find.text('Built with Flutter + Material Design 3'),
-      findsOneWidget,
-    );
+    expect(find.text('by Ryanditko'), findsOneWidget);
   });
 }
