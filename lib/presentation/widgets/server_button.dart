@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../core/models/screen_contract.dart';
 import '../../core/utils/color_utils.dart';
@@ -65,9 +66,13 @@ void handleAction(BuildContext context, ActionDef? action) {
         const SnackBar(content: Text('Copied to clipboard')),
       );
     case 'openUrl':
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Open URL: ${action.message ?? ''}')),
-      );
+      final url = action.message ?? '';
+      if (url.isNotEmpty) {
+        final uri = Uri.tryParse(url);
+        if (uri != null) {
+          launchUrl(uri, mode: LaunchMode.externalApplication);
+        }
+      }
     case 'showDialog':
       showDialog<void>(
         context: context,
