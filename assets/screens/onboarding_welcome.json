@@ -1,0 +1,141 @@
+{
+  "schemaVersion": "1.0",
+  "screen": {
+    "id": "onboarding_welcome",
+    "title": "Getting Started",
+    "root": {
+      "type": "column",
+      "props": {
+        "crossAxisAlignment": "stretch",
+        "padding": { "top": 32, "bottom": 32, "left": 24, "right": 24 }
+      },
+      "children": [
+        {
+          "type": "center",
+          "children": [
+            {
+              "type": "container",
+              "props": {
+                "padding": 20,
+                "decoration": {
+                  "gradient": {
+                    "type": "linear",
+                    "colors": ["#820AD1", "#D72F87"],
+                    "begin": "topLeft",
+                    "end": "bottomRight"
+                  },
+                  "borderRadius": 24
+                }
+              },
+              "children": [
+                { "type": "icon", "props": { "name": "school", "size": 48, "color": "#FFFFFF" } }
+              ]
+            }
+          ]
+        },
+        { "type": "spacer", "props": { "height": 24 } },
+        {
+          "type": "text",
+          "props": {
+            "content": "Build Screens with JSON",
+            "style": { "fontSize": 26, "fontWeight": "bold", "textAlign": "center" }
+          }
+        },
+        { "type": "spacer", "props": { "height": 8 } },
+        {
+          "type": "text",
+          "props": {
+            "content": "Learn how to create Flutter interfaces dynamically using JSON contracts. No Dart code needed!",
+            "style": { "fontSize": 15, "color": "#666666", "textAlign": "center" }
+          }
+        },
+        { "type": "divider", "props": { "height": 32 } },
+
+        {
+          "type": "text",
+          "props": {
+            "content": "What you'll learn",
+            "style": { "fontSize": 18, "fontWeight": "w700" }
+          }
+        },
+        { "type": "spacer", "props": { "height": 12 } },
+
+        {
+          "type": "card",
+          "props": { "padding": 0, "elevation": 0 },
+          "children": [
+            {
+              "type": "column",
+              "children": [
+                {
+                  "type": "listTile",
+                  "props": {
+                    "title": "JSON Structure",
+                    "subtitle": "Understand the contract schema",
+                    "leadingIcon": "description"
+                  }
+                },
+                { "type": "divider", "props": { "height": 1, "indent": 56 } },
+                {
+                  "type": "listTile",
+                  "props": {
+                    "title": "Components",
+                    "subtitle": "103 component types available",
+                    "leadingIcon": "widgets"
+                  }
+                },
+                { "type": "divider", "props": { "height": 1, "indent": 56 } },
+                {
+                  "type": "listTile",
+                  "props": {
+                    "title": "Actions & Interactivity",
+                    "subtitle": "Navigate, submit, and more",
+                    "leadingIcon": "touch_app"
+                  }
+                },
+                { "type": "divider", "props": { "height": 1, "indent": 56 } },
+                {
+                  "type": "listTile",
+                  "props": {
+                    "title": "Expressions & Theming",
+                    "subtitle": "Dynamic data and custom themes",
+                    "leadingIcon": "palette"
+                  }
+                },
+                { "type": "divider", "props": { "height": 1, "indent": 56 } },
+                {
+                  "type": "listTile",
+                  "props": {
+                    "title": "Debugging Errors",
+                    "subtitle": "Fix rendering issues quickly",
+                    "leadingIcon": "bug_report"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+
+        { "type": "spacer", "props": { "height": 24 } },
+
+        {
+          "type": "button",
+          "props": {
+            "label": "Start Learning",
+            "style": { "backgroundColor": "#820AD1", "textColor": "#FFFFFF" }
+          },
+          "action": { "type": "navigate", "targetScreenId": "onboarding_structure" }
+        },
+        { "type": "spacer", "props": { "height": 8 } },
+        {
+          "type": "button",
+          "props": {
+            "label": "Back to Home",
+            "style": { "backgroundColor": "#F5F0EB", "textColor": "#820AD1" }
+          },
+          "action": { "type": "navigate", "targetScreenId": "home" }
+        }
+      ]
+    }
+  }
+}

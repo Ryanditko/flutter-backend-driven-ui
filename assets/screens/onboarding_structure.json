@@ -1,0 +1,181 @@
+{
+  "schemaVersion": "1.0",
+  "screen": {
+    "id": "onboarding_structure",
+    "title": "JSON Structure",
+    "root": {
+      "type": "column",
+      "props": {
+        "crossAxisAlignment": "stretch",
+        "padding": { "top": 24, "bottom": 32, "left": 24, "right": 24 }
+      },
+      "children": [
+        {
+          "type": "container",
+          "props": {
+            "padding": { "top": 4, "bottom": 4, "left": 12, "right": 12 },
+            "decoration": { "color": "#E8F5E9", "borderRadius": 8 }
+          },
+          "children": [
+            {
+              "type": "text",
+              "props": { "content": "Step 1 of 4", "style": { "fontSize": 12, "fontWeight": "w600", "color": "#2E7D32" } }
+            }
+          ]
+        },
+        { "type": "spacer", "props": { "height": 16 } },
+        {
+          "type": "text",
+          "props": {
+            "content": "The JSON Contract",
+            "style": { "fontSize": 22, "fontWeight": "bold" }
+          }
+        },
+        { "type": "spacer", "props": { "height": 8 } },
+        {
+          "type": "text",
+          "props": {
+            "content": "Every screen is defined by a JSON contract with 4 main sections:",
+            "style": { "fontSize": 14, "color": "#666666" }
+          }
+        },
+        { "type": "spacer", "props": { "height": 16 } },
+
+        {
+          "type": "card",
+          "props": { "padding": { "top": 16, "bottom": 16, "left": 16, "right": 16 }, "elevation": 0 },
+          "children": [
+            {
+              "type": "column",
+              "props": { "crossAxisAlignment": "start" },
+              "children": [
+                {
+                  "type": "row",
+                  "children": [
+                    { "type": "icon", "props": { "name": "tag", "size": 20, "color": "#820AD1" } },
+                    { "type": "spacer", "props": { "width": 8, "height": 1 } },
+                    { "type": "text", "props": { "content": "schemaVersion", "style": { "fontWeight": "w600", "fontSize": 15 } } }
+                  ]
+                },
+                { "type": "spacer", "props": { "height": 4 } },
+                { "type": "text", "props": { "content": "Always \"1.0\" — tells the engine which format to expect.", "style": { "fontSize": 13, "color": "#666666" } } }
+              ]
+            }
+          ]
+        },
+        { "type": "spacer", "props": { "height": 8 } },
+
+        {
+          "type": "card",
+          "props": { "padding": { "top": 16, "bottom": 16, "left": 16, "right": 16 }, "elevation": 0 },
+          "children": [
+            {
+              "type": "column",
+              "props": { "crossAxisAlignment": "start" },
+              "children": [
+                {
+                  "type": "row",
+                  "children": [
+                    { "type": "icon", "props": { "name": "phone_android", "size": 20, "color": "#D72F87" } },
+                    { "type": "spacer", "props": { "width": 8, "height": 1 } },
+                    { "type": "text", "props": { "content": "screen", "style": { "fontWeight": "w600", "fontSize": 15 } } }
+                  ]
+                },
+                { "type": "spacer", "props": { "height": 4 } },
+                { "type": "text", "props": { "content": "Contains id, title, and root. The root is your component tree.", "style": { "fontSize": 13, "color": "#666666" } } }
+              ]
+            }
+          ]
+        },
+        { "type": "spacer", "props": { "height": 8 } },
+
+        {
+          "type": "card",
+          "props": { "padding": { "top": 16, "bottom": 16, "left": 16, "right": 16 }, "elevation": 0 },
+          "children": [
+            {
+              "type": "column",
+              "props": { "crossAxisAlignment": "start" },
+              "children": [
+                {
+                  "type": "row",
+                  "children": [
+                    { "type": "icon", "props": { "name": "data_object", "size": 20, "color": "#FF9800" } },
+                    { "type": "spacer", "props": { "width": 8, "height": 1 } },
+                    { "type": "text", "props": { "content": "context (optional)", "style": { "fontWeight": "w600", "fontSize": 15 } } }
+                  ]
+                },
+                { "type": "spacer", "props": { "height": 4 } },
+                { "type": "text", "props": { "content": "Variables for template interpolation. Use {{user.name}} in props.", "style": { "fontSize": 13, "color": "#666666" } } }
+              ]
+            }
+          ]
+        },
+        { "type": "spacer", "props": { "height": 8 } },
+
+        {
+          "type": "card",
+          "props": { "padding": { "top": 16, "bottom": 16, "left": 16, "right": 16 }, "elevation": 0 },
+          "children": [
+            {
+              "type": "column",
+              "props": { "crossAxisAlignment": "start" },
+              "children": [
+                {
+                  "type": "row",
+                  "children": [
+                    { "type": "icon", "props": { "name": "palette", "size": 20, "color": "#00897B" } },
+                    { "type": "spacer", "props": { "width": 8, "height": 1 } },
+                    { "type": "text", "props": { "content": "theme (optional)", "style": { "fontWeight": "w600", "fontSize": 15 } } }
+                  ]
+                },
+                { "type": "spacer", "props": { "height": 4 } },
+                { "type": "text", "props": { "content": "Per-screen colors, fonts, and brightness. Overrides the app theme.", "style": { "fontSize": 13, "color": "#666666" } } }
+              ]
+            }
+          ]
+        },
+
+        { "type": "divider", "props": { "height": 32 } },
+
+        {
+          "type": "container",
+          "props": {
+            "padding": 16,
+            "decoration": { "color": "#FFF8E1", "borderRadius": 12 }
+          },
+          "children": [
+            {
+              "type": "row",
+              "props": { "crossAxisAlignment": "start" },
+              "children": [
+                { "type": "icon", "props": { "name": "lightbulb", "size": 20, "color": "#F57F17" } },
+                { "type": "spacer", "props": { "width": 10, "height": 1 } },
+                {
+                  "type": "expanded",
+                  "children": [
+                    {
+                      "type": "text",
+                      "props": {
+                        "content": "Tip: Every component node has a \"type\" (like \"text\", \"column\", \"button\") and \"props\" (the component's settings). Layout components also have \"children\".",
+                        "style": { "fontSize": 13, "color": "#795548" }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+
+        { "type": "spacer", "props": { "height": 24 } },
+
+        {
+          "type": "button",
+          "props": { "label": "Next: Components", "style": { "backgroundColor": "#820AD1", "textColor": "#FFFFFF" } },
+          "action": { "type": "navigate", "targetScreenId": "onboarding_components" }
+        }
+      ]
+    }
+  }
+}

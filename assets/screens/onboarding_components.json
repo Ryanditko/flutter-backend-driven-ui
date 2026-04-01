@@ -1,0 +1,157 @@
+{
+  "schemaVersion": "1.0",
+  "screen": {
+    "id": "onboarding_components",
+    "title": "Components",
+    "root": {
+      "type": "column",
+      "props": {
+        "crossAxisAlignment": "stretch",
+        "padding": { "top": 24, "bottom": 32, "left": 24, "right": 24 }
+      },
+      "children": [
+        {
+          "type": "container",
+          "props": {
+            "padding": { "top": 4, "bottom": 4, "left": 12, "right": 12 },
+            "decoration": { "color": "#E3F2FD", "borderRadius": 8 }
+          },
+          "children": [
+            { "type": "text", "props": { "content": "Step 2 of 4", "style": { "fontSize": 12, "fontWeight": "w600", "color": "#1565C0" } } }
+          ]
+        },
+        { "type": "spacer", "props": { "height": 16 } },
+        {
+          "type": "text",
+          "props": { "content": "Component Types", "style": { "fontSize": 22, "fontWeight": "bold" } }
+        },
+        { "type": "spacer", "props": { "height": 8 } },
+        {
+          "type": "text",
+          "props": { "content": "Components are divided into two categories: layout (containers with children) and leaf (visual elements).", "style": { "fontSize": 14, "color": "#666666" } }
+        },
+        { "type": "divider", "props": { "height": 24 } },
+
+        {
+          "type": "text",
+          "props": { "content": "Layout Components", "style": { "fontSize": 16, "fontWeight": "w700" } }
+        },
+        { "type": "spacer", "props": { "height": 8 } },
+        {
+          "type": "text",
+          "props": { "content": "These contain children and control how they are arranged.", "style": { "fontSize": 13, "color": "#888888" } }
+        },
+        { "type": "spacer", "props": { "height": 12 } },
+
+        {
+          "type": "container",
+          "props": { "padding": 12, "decoration": { "color": "#F3E5F5", "borderRadius": 12 } },
+          "children": [
+            {
+              "type": "column",
+              "props": { "crossAxisAlignment": "start" },
+              "children": [
+                { "type": "text", "props": { "content": "Example: Column layout", "style": { "fontSize": 12, "fontWeight": "w600", "color": "#820AD1" } } },
+                { "type": "spacer", "props": { "height": 8 } },
+                {
+                  "type": "container",
+                  "props": { "padding": 10, "decoration": { "color": "#FFFFFF", "borderRadius": 8 } },
+                  "children": [
+                    {
+                      "type": "text",
+                      "props": { "content": "{ \"type\": \"column\",\n  \"props\": { \"crossAxisAlignment\": \"stretch\" },\n  \"children\": [ ... ] }", "style": { "fontSize": 12, "color": "#333333" } }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        { "type": "spacer", "props": { "height": 12 } },
+
+        {
+          "type": "wrap",
+          "props": { "spacing": 6, "runSpacing": 6 },
+          "children": [
+            { "type": "chip", "props": { "label": "column", "backgroundColor": "#E8EAF6" } },
+            { "type": "chip", "props": { "label": "row", "backgroundColor": "#E8EAF6" } },
+            { "type": "chip", "props": { "label": "stack", "backgroundColor": "#E8EAF6" } },
+            { "type": "chip", "props": { "label": "container", "backgroundColor": "#E8EAF6" } },
+            { "type": "chip", "props": { "label": "card", "backgroundColor": "#E8EAF6" } },
+            { "type": "chip", "props": { "label": "listView", "backgroundColor": "#E8EAF6" } },
+            { "type": "chip", "props": { "label": "wrap", "backgroundColor": "#E8EAF6" } },
+            { "type": "chip", "props": { "label": "center", "backgroundColor": "#E8EAF6" } },
+            { "type": "chip", "props": { "label": "padding", "backgroundColor": "#E8EAF6" } },
+            { "type": "chip", "props": { "label": "+90 more...", "backgroundColor": "#E0E0E0" } }
+          ]
+        },
+
+        { "type": "divider", "props": { "height": 24 } },
+
+        {
+          "type": "text",
+          "props": { "content": "Leaf Components", "style": { "fontSize": 16, "fontWeight": "w700" } }
+        },
+        { "type": "spacer", "props": { "height": 8 } },
+        {
+          "type": "text",
+          "props": { "content": "These render directly and don't have children.", "style": { "fontSize": 13, "color": "#888888" } }
+        },
+        { "type": "spacer", "props": { "height": 12 } },
+
+        {
+          "type": "container",
+          "props": { "padding": 12, "decoration": { "color": "#E8F5E9", "borderRadius": 12 } },
+          "children": [
+            {
+              "type": "column",
+              "props": { "crossAxisAlignment": "start" },
+              "children": [
+                { "type": "text", "props": { "content": "Example: Text component", "style": { "fontSize": 12, "fontWeight": "w600", "color": "#2E7D32" } } },
+                { "type": "spacer", "props": { "height": 8 } },
+                {
+                  "type": "container",
+                  "props": { "padding": 10, "decoration": { "color": "#FFFFFF", "borderRadius": 8 } },
+                  "children": [
+                    {
+                      "type": "text",
+                      "props": { "content": "{ \"type\": \"text\",\n  \"props\": {\n    \"content\": \"Hello World\",\n    \"style\": { \"fontSize\": 24 }\n  } }", "style": { "fontSize": 12, "color": "#333333" } }
+                    }
+                  ]
+                },
+                { "type": "spacer", "props": { "height": 8 } },
+                { "type": "text", "props": { "content": "Result:", "style": { "fontSize": 12, "fontWeight": "w600", "color": "#2E7D32" } } },
+                { "type": "spacer", "props": { "height": 4 } },
+                { "type": "text", "props": { "content": "Hello World", "style": { "fontSize": 24 } } }
+              ]
+            }
+          ]
+        },
+        { "type": "spacer", "props": { "height": 12 } },
+
+        {
+          "type": "wrap",
+          "props": { "spacing": 6, "runSpacing": 6 },
+          "children": [
+            { "type": "chip", "props": { "label": "text", "backgroundColor": "#C8E6C9" } },
+            { "type": "chip", "props": { "label": "button", "backgroundColor": "#C8E6C9" } },
+            { "type": "chip", "props": { "label": "image", "backgroundColor": "#C8E6C9" } },
+            { "type": "chip", "props": { "label": "input", "backgroundColor": "#C8E6C9" } },
+            { "type": "chip", "props": { "label": "icon", "backgroundColor": "#C8E6C9" } },
+            { "type": "chip", "props": { "label": "divider", "backgroundColor": "#C8E6C9" } },
+            { "type": "chip", "props": { "label": "slider", "backgroundColor": "#C8E6C9" } },
+            { "type": "chip", "props": { "label": "switch", "backgroundColor": "#C8E6C9" } }
+          ]
+        },
+
+        { "type": "spacer", "props": { "height": 24 } },
+
+        {
+          "type": "button",
+          "props": { "label": "Next: Actions & Interactivity", "style": { "backgroundColor": "#820AD1", "textColor": "#FFFFFF" } },
+          "action": { "type": "navigate", "targetScreenId": "onboarding_actions" }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,230 @@
+{
+  "schemaVersion": "1.0",
+  "screen": {
+    "id": "onboarding_debugging",
+    "title": "Debugging",
+    "root": {
+      "type": "column",
+      "props": {
+        "crossAxisAlignment": "stretch",
+        "padding": { "top": 24, "bottom": 32, "left": 24, "right": 24 }
+      },
+      "children": [
+        {
+          "type": "container",
+          "props": {
+            "padding": { "top": 4, "bottom": 4, "left": 12, "right": 12 },
+            "decoration": { "color": "#FFEBEE", "borderRadius": 8 }
+          },
+          "children": [
+            { "type": "text", "props": { "content": "Step 4 of 4", "style": { "fontSize": 12, "fontWeight": "w600", "color": "#C62828" } } }
+          ]
+        },
+        { "type": "spacer", "props": { "height": 16 } },
+        {
+          "type": "text",
+          "props": { "content": "Debugging & Errors", "style": { "fontSize": 22, "fontWeight": "bold" } }
+        },
+        { "type": "spacer", "props": { "height": 8 } },
+        {
+          "type": "text",
+          "props": { "content": "When something goes wrong in your JSON contract, the engine provides clear feedback.", "style": { "fontSize": 14, "color": "#666666" } }
+        },
+        { "type": "divider", "props": { "height": 24 } },
+
+        {
+          "type": "text",
+          "props": { "content": "Common Mistakes", "style": { "fontSize": 16, "fontWeight": "w700" } }
+        },
+        { "type": "spacer", "props": { "height": 12 } },
+
+        {
+          "type": "card",
+          "props": { "padding": { "top": 16, "bottom": 16, "left": 16, "right": 16 }, "elevation": 0 },
+          "children": [
+            {
+              "type": "column",
+              "props": { "crossAxisAlignment": "start" },
+              "children": [
+                {
+                  "type": "row",
+                  "children": [
+                    {
+                      "type": "container",
+                      "props": { "padding": 6, "decoration": { "color": "#FFEBEE", "borderRadius": 8 } },
+                      "children": [
+                        { "type": "icon", "props": { "name": "error_outline", "size": 18, "color": "#C62828" } }
+                      ]
+                    },
+                    { "type": "spacer", "props": { "width": 12, "height": 1 } },
+                    { "type": "text", "props": { "content": "Unknown component type", "style": { "fontWeight": "w600" } } }
+                  ]
+                },
+                { "type": "spacer", "props": { "height": 8 } },
+                { "type": "text", "props": { "content": "Using a \"type\" that doesn't exist (e.g., \"textt\" instead of \"text\"). The Error Boundary will catch it and show a red fallback.", "style": { "fontSize": 13, "color": "#666666" } } }
+              ]
+            }
+          ]
+        },
+        { "type": "spacer", "props": { "height": 8 } },
+
+        {
+          "type": "card",
+          "props": { "padding": { "top": 16, "bottom": 16, "left": 16, "right": 16 }, "elevation": 0 },
+          "children": [
+            {
+              "type": "column",
+              "props": { "crossAxisAlignment": "start" },
+              "children": [
+                {
+                  "type": "row",
+                  "children": [
+                    {
+                      "type": "container",
+                      "props": { "padding": 6, "decoration": { "color": "#FFF3E0", "borderRadius": 8 } },
+                      "children": [
+                        { "type": "icon", "props": { "name": "warning_amber", "size": 18, "color": "#E65100" } }
+                      ]
+                    },
+                    { "type": "spacer", "props": { "width": 12, "height": 1 } },
+                    { "type": "text", "props": { "content": "Missing required props", "style": { "fontWeight": "w600" } } }
+                  ]
+                },
+                { "type": "spacer", "props": { "height": 8 } },
+                { "type": "text", "props": { "content": "Forgetting \"content\" on text, \"label\" on button, or \"url\" on image. The ContractValidator warns about these.", "style": { "fontSize": 13, "color": "#666666" } } }
+              ]
+            }
+          ]
+        },
+        { "type": "spacer", "props": { "height": 8 } },
+
+        {
+          "type": "card",
+          "props": { "padding": { "top": 16, "bottom": 16, "left": 16, "right": 16 }, "elevation": 0 },
+          "children": [
+            {
+              "type": "column",
+              "props": { "crossAxisAlignment": "start" },
+              "children": [
+                {
+                  "type": "row",
+                  "children": [
+                    {
+                      "type": "container",
+                      "props": { "padding": 6, "decoration": { "color": "#E3F2FD", "borderRadius": 8 } },
+                      "children": [
+                        { "type": "icon", "props": { "name": "info_outline", "size": 18, "color": "#1565C0" } }
+                      ]
+                    },
+                    { "type": "spacer", "props": { "width": 12, "height": 1 } },
+                    { "type": "text", "props": { "content": "Invalid JSON syntax", "style": { "fontWeight": "w600" } } }
+                  ]
+                },
+                { "type": "spacer", "props": { "height": 8 } },
+                { "type": "text", "props": { "content": "Missing commas, brackets, or quotes. Use the Playground to live-edit and catch syntax errors instantly.", "style": { "fontSize": 13, "color": "#666666" } } }
+              ]
+            }
+          ]
+        },
+
+        { "type": "divider", "props": { "height": 24 } },
+
+        {
+          "type": "text",
+          "props": { "content": "Built-in Safety", "style": { "fontSize": 16, "fontWeight": "w700" } }
+        },
+        { "type": "spacer", "props": { "height": 12 } },
+
+        {
+          "type": "container",
+          "props": { "padding": 16, "decoration": { "color": "#E8F5E9", "borderRadius": 12 } },
+          "children": [
+            {
+              "type": "column",
+              "props": { "crossAxisAlignment": "start" },
+              "children": [
+                {
+                  "type": "row",
+                  "children": [
+                    { "type": "icon", "props": { "name": "shield", "size": 20, "color": "#2E7D32" } },
+                    { "type": "spacer", "props": { "width": 8, "height": 1 } },
+                    { "type": "text", "props": { "content": "Error Boundary", "style": { "fontWeight": "w600", "color": "#2E7D32" } } }
+                  ]
+                },
+                { "type": "spacer", "props": { "height": 6 } },
+                { "type": "text", "props": { "content": "Each component is wrapped in an error boundary. If one fails, only that component shows an error — the rest of the screen continues working.", "style": { "fontSize": 13, "color": "#555555" } } }
+              ]
+            }
+          ]
+        },
+        { "type": "spacer", "props": { "height": 8 } },
+        {
+          "type": "container",
+          "props": { "padding": 16, "decoration": { "color": "#E8F5E9", "borderRadius": 12 } },
+          "children": [
+            {
+              "type": "column",
+              "props": { "crossAxisAlignment": "start" },
+              "children": [
+                {
+                  "type": "row",
+                  "children": [
+                    { "type": "icon", "props": { "name": "checklist", "size": 20, "color": "#2E7D32" } },
+                    { "type": "spacer", "props": { "width": 8, "height": 1 } },
+                    { "type": "text", "props": { "content": "Contract Validator", "style": { "fontWeight": "w600", "color": "#2E7D32" } } }
+                  ]
+                },
+                { "type": "spacer", "props": { "height": 6 } },
+                { "type": "text", "props": { "content": "Before rendering, the engine validates your contract and warns about issues: unknown types, missing props, invalid actions.", "style": { "fontSize": 13, "color": "#555555" } } }
+              ]
+            }
+          ]
+        },
+
+        { "type": "spacer", "props": { "height": 24 } },
+
+        {
+          "type": "container",
+          "props": {
+            "padding": 20,
+            "decoration": {
+              "gradient": {
+                "type": "linear",
+                "colors": ["#820AD1", "#D72F87"],
+                "begin": "topLeft",
+                "end": "bottomRight"
+              },
+              "borderRadius": 16
+            }
+          },
+          "children": [
+            {
+              "type": "column",
+              "props": { "crossAxisAlignment": "center" },
+              "children": [
+                { "type": "icon", "props": { "name": "celebration", "size": 40, "color": "#FFFFFF" } },
+                { "type": "spacer", "props": { "height": 12 } },
+                { "type": "text", "props": { "content": "You're ready!", "style": { "fontSize": 20, "fontWeight": "bold", "color": "#FFFFFF", "textAlign": "center" } } },
+                { "type": "spacer", "props": { "height": 4 } },
+                { "type": "text", "props": { "content": "Head to the Playground to start building your own screens.", "style": { "fontSize": 14, "color": "#CCFFFFFF", "textAlign": "center" } } }
+              ]
+            }
+          ]
+        },
+        { "type": "spacer", "props": { "height": 16 } },
+
+        {
+          "type": "button",
+          "props": { "label": "Open Playground", "style": { "backgroundColor": "#820AD1", "textColor": "#FFFFFF" } },
+          "action": { "type": "navigate", "targetScreenId": "home" }
+        },
+        { "type": "spacer", "props": { "height": 8 } },
+        {
+          "type": "button",
+          "props": { "label": "Back to Home", "style": { "backgroundColor": "#F5F0EB", "textColor": "#820AD1" } },
+          "action": { "type": "navigate", "targetScreenId": "home" }
+        }
+      ]
+    }
+  }
+}
