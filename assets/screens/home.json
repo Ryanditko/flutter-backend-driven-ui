@@ -1,5 +1,9 @@
 {
   "schemaVersion": "1.0",
+  "context": {
+    "user": { "name": "Ryanditko" },
+    "stats": { "components": "103", "screens": "8" }
+  },
   "screen": {
     "id": "home",
     "title": "Home",
@@ -7,31 +11,21 @@
       "type": "column",
       "props": {
         "mainAxisAlignment": "start",
-        "crossAxisAlignment": "stretch",
-        "padding": { "top": 32, "bottom": 32, "left": 24, "right": 24 }
+        "crossAxisAlignment": "stretch"
       },
       "children": [
         {
-          "type": "text",
+          "type": "container",
           "props": {
-            "content": "Welcome to Server-Driven UI",
-            "style": { "fontSize": 28, "fontWeight": "bold", "textAlign": "center" }
-          }
-        },
-        { "type": "spacer", "props": { "height": 12 } },
-        {
-          "type": "text",
-          "props": {
-            "content": "This screen is rendered entirely from a JSON contract. No hardcoded layouts — the widget tree is built dynamically at runtime.",
-            "style": { "fontSize": 16, "color": "#666666" }
-          }
-        },
-        { "type": "spacer", "props": { "height": 32 } },
-        {
-          "type": "card",
-          "props": {
-            "padding": { "top": 16, "bottom": 16, "left": 16, "right": 16 },
-            "elevation": 2
+            "padding": { "top": 32, "bottom": 28, "left": 24, "right": 24 },
+            "decoration": {
+              "gradient": {
+                "type": "linear",
+                "colors": ["#6A0DAD", "#B8336A"],
+                "begin": "topLeft",
+                "end": "bottomRight"
+              }
+            }
           },
           "children": [
             {
@@ -39,88 +33,391 @@
               "props": { "crossAxisAlignment": "start" },
               "children": [
                 {
-                  "type": "text",
-                  "props": {
-                    "content": "Quick Actions",
-                    "style": { "fontSize": 18, "fontWeight": "w600" }
-                  }
+                  "type": "row",
+                  "props": { "mainAxisAlignment": "spaceBetween" },
+                  "children": [
+                    {
+                      "type": "expanded",
+                      "children": [
+                        {
+                          "type": "column",
+                          "props": { "crossAxisAlignment": "start" },
+                          "children": [
+                            {
+                              "type": "text",
+                              "props": {
+                                "content": "Welcome back,",
+                                "style": { "fontSize": 15, "color": "#CCFFFFFF" }
+                              }
+                            },
+                            {
+                              "type": "text",
+                              "props": {
+                                "content": "{{user.name}}",
+                                "style": { "fontSize": 26, "fontWeight": "bold", "color": "#FFFFFF" }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "container",
+                      "props": {
+                        "decoration": {
+                          "borderRadius": 28,
+                          "border": { "color": "#55FFFFFF", "width": 2 }
+                        }
+                      },
+                      "children": [
+                        {
+                          "type": "image",
+                          "props": {
+                            "url": "https://avatars.githubusercontent.com/u/196965460?v=4",
+                            "width": 52,
+                            "height": 52,
+                            "borderRadius": 26
+                          }
+                        }
+                      ]
+                    }
+                  ]
                 },
-                { "type": "spacer", "props": { "height": 12 } },
+                { "type": "spacer", "props": { "height": 20 } },
                 {
-                  "type": "button",
-                  "props": {
-                    "label": "View Profile",
-                    "style": { "backgroundColor": "#820AD1", "textColor": "#FFFFFF" }
-                  },
-                  "action": { "type": "navigate", "targetScreenId": "profile" }
-                },
-                { "type": "spacer", "props": { "height": 8 } },
-                {
-                  "type": "button",
-                  "props": {
-                    "label": "Open Form Demo",
-                    "style": { "backgroundColor": "#D72F87", "textColor": "#FFFFFF" }
-                  },
-                  "action": { "type": "navigate", "targetScreenId": "form" }
-                },
-                { "type": "spacer", "props": { "height": 8 } },
-                {
-                  "type": "button",
-                  "props": {
-                    "label": "Components Showcase",
-                    "style": { "backgroundColor": "#3A0066", "textColor": "#FFFFFF" }
-                  },
-                  "action": { "type": "navigate", "targetScreenId": "components_showcase" }
-                },
-                { "type": "spacer", "props": { "height": 8 } },
-                {
-                  "type": "button",
-                  "props": {
-                    "label": "New Components",
-                    "style": { "backgroundColor": "#FF5722", "textColor": "#FFFFFF" }
-                  },
-                  "action": { "type": "navigate", "targetScreenId": "new_components" }
-                },
-                { "type": "spacer", "props": { "height": 8 } },
-                {
-                  "type": "button",
-                  "props": {
-                    "label": "Advanced Components",
-                    "style": { "backgroundColor": "#00897B", "textColor": "#FFFFFF" }
-                  },
-                  "action": { "type": "navigate", "targetScreenId": "advanced_components" }
-                },
-                { "type": "spacer", "props": { "height": 8 } },
-                {
-                  "type": "button",
-                  "props": {
-                    "label": "Expressions Demo",
-                    "style": { "backgroundColor": "#F5F0EB", "textColor": "#820AD1" }
-                  },
-                  "action": { "type": "navigate", "targetScreenId": "expressions_demo" }
-                },
-                { "type": "spacer", "props": { "height": 8 } },
-                {
-                  "type": "button",
-                  "props": {
-                    "label": "Theme Demo (Dark)",
-                    "style": { "backgroundColor": "#1A1A2E", "textColor": "#FFFFFF" }
-                  },
-                  "action": { "type": "navigate", "targetScreenId": "theme_demo" }
+                  "type": "row",
+                  "children": [
+                    {
+                      "type": "container",
+                      "props": {
+                        "padding": { "top": 8, "bottom": 8, "left": 14, "right": 14 },
+                        "decoration": {
+                          "color": "#33FFFFFF",
+                          "borderRadius": 20
+                        }
+                      },
+                      "children": [
+                        {
+                          "type": "row",
+                          "children": [
+                            { "type": "icon", "props": { "name": "widgets", "size": 14, "color": "#FFFFFF" } },
+                            { "type": "spacer", "props": { "width": 6, "height": 1 } },
+                            {
+                              "type": "text",
+                              "props": {
+                                "content": "{{stats.components}} Components",
+                                "style": { "fontSize": 12, "color": "#FFFFFF", "fontWeight": "w600" }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    { "type": "spacer", "props": { "width": 8, "height": 1 } },
+                    {
+                      "type": "container",
+                      "props": {
+                        "padding": { "top": 8, "bottom": 8, "left": 14, "right": 14 },
+                        "decoration": {
+                          "color": "#33FFFFFF",
+                          "borderRadius": 20
+                        }
+                      },
+                      "children": [
+                        {
+                          "type": "row",
+                          "children": [
+                            { "type": "icon", "props": { "name": "phone_android", "size": 14, "color": "#FFFFFF" } },
+                            { "type": "spacer", "props": { "width": 6, "height": 1 } },
+                            {
+                              "type": "text",
+                              "props": {
+                                "content": "{{stats.screens}} Screens",
+                                "style": { "fontSize": 12, "color": "#FFFFFF", "fontWeight": "w600" }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
                 }
               ]
             }
           ]
         },
-        { "type": "spacer", "props": { "height": 24 } },
+
         {
-          "type": "image",
+          "type": "container",
           "props": {
-            "url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=200&fit=crop",
-            "height": 200,
-            "fit": "cover",
-            "borderRadius": 12
-          }
+            "padding": { "top": 24, "bottom": 0, "left": 20, "right": 20 }
+          },
+          "children": [
+            {
+              "type": "column",
+              "props": { "crossAxisAlignment": "stretch" },
+              "children": [
+                {
+                  "type": "text",
+                  "props": {
+                    "content": "Quick Access",
+                    "style": { "fontSize": 17, "fontWeight": "w700", "color": "#1A1A1A" }
+                  }
+                },
+                { "type": "spacer", "props": { "height": 14 } },
+
+                {
+                  "type": "row",
+                  "children": [
+                    {
+                      "type": "expanded",
+                      "children": [
+                        {
+                          "type": "container",
+                          "props": {
+                            "padding": { "top": 20, "bottom": 20, "left": 16, "right": 16 },
+                            "decoration": {
+                              "gradient": {
+                                "type": "linear",
+                                "colors": ["#7C3AED", "#A855F7"],
+                                "begin": "topLeft",
+                                "end": "bottomRight"
+                              },
+                              "borderRadius": 16
+                            }
+                          },
+                          "children": [
+                            {
+                              "type": "column",
+                              "props": { "crossAxisAlignment": "start" },
+                              "children": [
+                                { "type": "icon", "props": { "name": "person", "size": 28, "color": "#FFFFFF" } },
+                                { "type": "spacer", "props": { "height": 12 } },
+                                { "type": "text", "props": { "content": "Profile", "style": { "fontWeight": "w700", "fontSize": 15, "color": "#FFFFFF" } } },
+                                { "type": "text", "props": { "content": "Your card", "style": { "fontSize": 12, "color": "#AAFFFFFF" } } }
+                              ]
+                            }
+                          ],
+                          "action": { "type": "navigate", "targetScreenId": "profile" }
+                        }
+                      ]
+                    },
+                    { "type": "spacer", "props": { "width": 12, "height": 1 } },
+                    {
+                      "type": "expanded",
+                      "children": [
+                        {
+                          "type": "container",
+                          "props": {
+                            "padding": { "top": 20, "bottom": 20, "left": 16, "right": 16 },
+                            "decoration": {
+                              "gradient": {
+                                "type": "linear",
+                                "colors": ["#EC4899", "#F472B6"],
+                                "begin": "topLeft",
+                                "end": "bottomRight"
+                              },
+                              "borderRadius": 16
+                            }
+                          },
+                          "children": [
+                            {
+                              "type": "column",
+                              "props": { "crossAxisAlignment": "start" },
+                              "children": [
+                                { "type": "icon", "props": { "name": "edit_note", "size": 28, "color": "#FFFFFF" } },
+                                { "type": "spacer", "props": { "height": 12 } },
+                                { "type": "text", "props": { "content": "Form", "style": { "fontWeight": "w700", "fontSize": 15, "color": "#FFFFFF" } } },
+                                { "type": "text", "props": { "content": "Validation", "style": { "fontSize": 12, "color": "#AAFFFFFF" } } }
+                              ]
+                            }
+                          ],
+                          "action": { "type": "navigate", "targetScreenId": "form" }
+                        }
+                      ]
+                    },
+                    { "type": "spacer", "props": { "width": 12, "height": 1 } },
+                    {
+                      "type": "expanded",
+                      "children": [
+                        {
+                          "type": "container",
+                          "props": {
+                            "padding": { "top": 20, "bottom": 20, "left": 16, "right": 16 },
+                            "decoration": {
+                              "gradient": {
+                                "type": "linear",
+                                "colors": ["#059669", "#34D399"],
+                                "begin": "topLeft",
+                                "end": "bottomRight"
+                              },
+                              "borderRadius": 16
+                            }
+                          },
+                          "children": [
+                            {
+                              "type": "column",
+                              "props": { "crossAxisAlignment": "start" },
+                              "children": [
+                                { "type": "icon", "props": { "name": "widgets", "size": 28, "color": "#FFFFFF" } },
+                                { "type": "spacer", "props": { "height": 12 } },
+                                { "type": "text", "props": { "content": "Showcase", "style": { "fontWeight": "w700", "fontSize": 15, "color": "#FFFFFF" } } },
+                                { "type": "text", "props": { "content": "All types", "style": { "fontSize": 12, "color": "#AAFFFFFF" } } }
+                              ]
+                            }
+                          ],
+                          "action": { "type": "navigate", "targetScreenId": "components_showcase" }
+                        }
+                      ]
+                    }
+                  ]
+                },
+
+                { "type": "spacer", "props": { "height": 28 } },
+
+                {
+                  "type": "text",
+                  "props": {
+                    "content": "Demos",
+                    "style": { "fontSize": 17, "fontWeight": "w700", "color": "#1A1A1A" }
+                  }
+                },
+                { "type": "spacer", "props": { "height": 14 } },
+
+                {
+                  "type": "container",
+                  "props": {
+                    "decoration": {
+                      "color": "#FFFFFF",
+                      "borderRadius": 16,
+                      "border": { "color": "#E5E7EB", "width": 1 }
+                    }
+                  },
+                  "children": [
+                    {
+                      "type": "column",
+                      "children": [
+                        {
+                          "type": "listTile",
+                          "props": {
+                            "title": "Advanced Components",
+                            "subtitle": "Layout wrappers, decorators, tiles & more",
+                            "leadingIcon": "auto_awesome",
+                            "trailingIcon": "chevron_right"
+                          },
+                          "action": { "type": "navigate", "targetScreenId": "advanced_components" }
+                        },
+                        { "type": "divider", "props": { "height": 1, "indent": 56 } },
+                        {
+                          "type": "listTile",
+                          "props": {
+                            "title": "New Components",
+                            "subtitle": "Dropdown, tabs & carousel",
+                            "leadingIcon": "view_carousel",
+                            "trailingIcon": "chevron_right"
+                          },
+                          "action": { "type": "navigate", "targetScreenId": "new_components" }
+                        },
+                        { "type": "divider", "props": { "height": 1, "indent": 56 } },
+                        {
+                          "type": "listTile",
+                          "props": {
+                            "title": "Expressions",
+                            "subtitle": "Template interpolation & conditional visibility",
+                            "leadingIcon": "code",
+                            "trailingIcon": "chevron_right"
+                          },
+                          "action": { "type": "navigate", "targetScreenId": "expressions_demo" }
+                        },
+                        { "type": "divider", "props": { "height": 1, "indent": 56 } },
+                        {
+                          "type": "listTile",
+                          "props": {
+                            "title": "Dark Theme",
+                            "subtitle": "Per-screen theming from JSON",
+                            "leadingIcon": "dark_mode",
+                            "trailingIcon": "chevron_right"
+                          },
+                          "action": { "type": "navigate", "targetScreenId": "theme_demo" }
+                        }
+                      ]
+                    }
+                  ]
+                },
+
+                { "type": "spacer", "props": { "height": 20 } },
+
+                {
+                  "type": "container",
+                  "props": {
+                    "padding": { "top": 16, "bottom": 16, "left": 18, "right": 18 },
+                    "decoration": {
+                      "gradient": {
+                        "type": "linear",
+                        "colors": ["#ECFDF5", "#D1FAE5"],
+                        "begin": "topLeft",
+                        "end": "bottomRight"
+                      },
+                      "borderRadius": 16,
+                      "border": { "color": "#A7F3D0", "width": 1 }
+                    }
+                  },
+                  "children": [
+                    {
+                      "type": "row",
+                      "children": [
+                        {
+                          "type": "container",
+                          "props": {
+                            "padding": 10,
+                            "decoration": {
+                              "color": "#059669",
+                              "borderRadius": 12
+                            }
+                          },
+                          "children": [
+                            { "type": "icon", "props": { "name": "school", "size": 22, "color": "#FFFFFF" } }
+                          ]
+                        },
+                        { "type": "spacer", "props": { "width": 14, "height": 1 } },
+                        {
+                          "type": "expanded",
+                          "children": [
+                            {
+                              "type": "column",
+                              "props": { "crossAxisAlignment": "start" },
+                              "children": [
+                                { "type": "text", "props": { "content": "Getting Started Guide", "style": { "fontWeight": "w700", "fontSize": 15, "color": "#065F46" } } },
+                                { "type": "text", "props": { "content": "Learn to build screens from JSON", "style": { "fontSize": 13, "color": "#047857" } } }
+                              ]
+                            }
+                          ]
+                        },
+                        { "type": "icon", "props": { "name": "arrow_forward", "size": 20, "color": "#059669" } }
+                      ]
+                    }
+                  ],
+                  "action": { "type": "navigate", "targetScreenId": "onboarding_welcome" }
+                },
+
+                { "type": "spacer", "props": { "height": 28 } },
+
+                {
+                  "type": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "props": {
+                        "content": "All screens are 100% JSON-driven",
+                        "style": { "fontSize": 12, "color": "#9CA3AF" }
+                      }
+                    }
+                  ]
+                },
+                { "type": "spacer", "props": { "height": 16 } }
+              ]
+            }
+          ]
         }
       ]
     }
