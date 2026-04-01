@@ -14,12 +14,15 @@ Widget buildServerInkWell(
   final splashColor = parseHexColor(node.props['splashColor'] as String?);
   final highlightColor = parseHexColor(node.props['highlightColor'] as String?);
 
-  return InkWell(
-    onTap: node.action != null ? () => handleAction(context, node.action) : null,
-    borderRadius: borderRadius,
-    splashColor: splashColor,
-    highlightColor: highlightColor,
-    child: buildSingleChild(node, buildChild),
+  return Semantics(
+    button: node.action != null,
+    child: InkWell(
+      onTap: node.action != null ? () => handleAction(context, node.action) : null,
+      borderRadius: borderRadius,
+      splashColor: splashColor,
+      highlightColor: highlightColor,
+      child: buildSingleChild(node, buildChild),
+    ),
   );
 }
 
@@ -28,10 +31,13 @@ Widget buildServerGestureDetector(
   BuildContext context,
   Widget Function(ComponentNode) buildChild,
 ) {
-  return GestureDetector(
-    onTap: node.action != null ? () => handleAction(context, node.action) : null,
-    behavior: _parseHitTestBehavior(node.props['behavior'] as String?),
-    child: buildSingleChild(node, buildChild),
+  return Semantics(
+    button: node.action != null,
+    child: GestureDetector(
+      onTap: node.action != null ? () => handleAction(context, node.action) : null,
+      behavior: _parseHitTestBehavior(node.props['behavior'] as String?),
+      child: buildSingleChild(node, buildChild),
+    ),
   );
 }
 
