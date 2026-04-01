@@ -1,0 +1,200 @@
+{
+  "schemaVersion": "1.0",
+  "screen": {
+    "id": "onboarding_actions",
+    "title": "Actions",
+    "root": {
+      "type": "column",
+      "props": {
+        "crossAxisAlignment": "stretch",
+        "padding": { "top": 24, "bottom": 32, "left": 24, "right": 24 }
+      },
+      "children": [
+        {
+          "type": "container",
+          "props": {
+            "padding": { "top": 4, "bottom": 4, "left": 12, "right": 12 },
+            "decoration": { "color": "#FFF3E0", "borderRadius": 8 }
+          },
+          "children": [
+            { "type": "text", "props": { "content": "Step 3 of 4", "style": { "fontSize": 12, "fontWeight": "w600", "color": "#E65100" } } }
+          ]
+        },
+        { "type": "spacer", "props": { "height": 16 } },
+        {
+          "type": "text",
+          "props": { "content": "Actions & Interactivity", "style": { "fontSize": 22, "fontWeight": "bold" } }
+        },
+        { "type": "spacer", "props": { "height": 8 } },
+        {
+          "type": "text",
+          "props": { "content": "Any component can have an \"action\" field that defines what happens when the user interacts with it.", "style": { "fontSize": 14, "color": "#666666" } }
+        },
+        { "type": "divider", "props": { "height": 24 } },
+
+        {
+          "type": "text",
+          "props": { "content": "Try these actions:", "style": { "fontSize": 16, "fontWeight": "w700" } }
+        },
+        { "type": "spacer", "props": { "height": 12 } },
+
+        {
+          "type": "card",
+          "props": { "padding": { "top": 12, "bottom": 12, "left": 16, "right": 16 }, "elevation": 0 },
+          "children": [
+            {
+              "type": "row",
+              "children": [
+                {
+                  "type": "expanded",
+                  "children": [
+                    {
+                      "type": "column",
+                      "props": { "crossAxisAlignment": "start" },
+                      "children": [
+                        { "type": "text", "props": { "content": "navigate", "style": { "fontWeight": "w600" } } },
+                        { "type": "text", "props": { "content": "Go to another screen", "style": { "fontSize": 12, "color": "#888888" } } }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "button",
+                  "props": { "label": "Try it", "style": { "backgroundColor": "#820AD1", "textColor": "#FFFFFF" } },
+                  "action": { "type": "navigate", "targetScreenId": "profile" }
+                }
+              ]
+            }
+          ]
+        },
+        { "type": "spacer", "props": { "height": 8 } },
+
+        {
+          "type": "card",
+          "props": { "padding": { "top": 12, "bottom": 12, "left": 16, "right": 16 }, "elevation": 0 },
+          "children": [
+            {
+              "type": "row",
+              "children": [
+                {
+                  "type": "expanded",
+                  "children": [
+                    {
+                      "type": "column",
+                      "props": { "crossAxisAlignment": "start" },
+                      "children": [
+                        { "type": "text", "props": { "content": "snackbar", "style": { "fontWeight": "w600" } } },
+                        { "type": "text", "props": { "content": "Show a message", "style": { "fontSize": 12, "color": "#888888" } } }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "button",
+                  "props": { "label": "Try it", "style": { "backgroundColor": "#D72F87", "textColor": "#FFFFFF" } },
+                  "action": { "type": "snackbar", "message": "This is a snackbar from JSON!" }
+                }
+              ]
+            }
+          ]
+        },
+        { "type": "spacer", "props": { "height": 8 } },
+
+        {
+          "type": "card",
+          "props": { "padding": { "top": 12, "bottom": 12, "left": 16, "right": 16 }, "elevation": 0 },
+          "children": [
+            {
+              "type": "row",
+              "children": [
+                {
+                  "type": "expanded",
+                  "children": [
+                    {
+                      "type": "column",
+                      "props": { "crossAxisAlignment": "start" },
+                      "children": [
+                        { "type": "text", "props": { "content": "copyToClipboard", "style": { "fontWeight": "w600" } } },
+                        { "type": "text", "props": { "content": "Copy text", "style": { "fontSize": 12, "color": "#888888" } } }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "button",
+                  "props": { "label": "Try it", "style": { "backgroundColor": "#00897B", "textColor": "#FFFFFF" } },
+                  "action": { "type": "copyToClipboard", "message": "Copied from Server-Driven UI!" }
+                }
+              ]
+            }
+          ]
+        },
+        { "type": "spacer", "props": { "height": 8 } },
+
+        {
+          "type": "card",
+          "props": { "padding": { "top": 12, "bottom": 12, "left": 16, "right": 16 }, "elevation": 0 },
+          "children": [
+            {
+              "type": "row",
+              "children": [
+                {
+                  "type": "expanded",
+                  "children": [
+                    {
+                      "type": "column",
+                      "props": { "crossAxisAlignment": "start" },
+                      "children": [
+                        { "type": "text", "props": { "content": "showDialog", "style": { "fontWeight": "w600" } } },
+                        { "type": "text", "props": { "content": "Show an alert", "style": { "fontSize": 12, "color": "#888888" } } }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "button",
+                  "props": { "label": "Try it", "style": { "backgroundColor": "#FF5722", "textColor": "#FFFFFF" } },
+                  "action": { "type": "showDialog", "targetScreenId": "Well done!", "message": "You just triggered a dialog action from JSON." }
+                }
+              ]
+            }
+          ]
+        },
+
+        { "type": "divider", "props": { "height": 24 } },
+
+        {
+          "type": "container",
+          "props": { "padding": 16, "decoration": { "color": "#FFF8E1", "borderRadius": 12 } },
+          "children": [
+            {
+              "type": "row",
+              "props": { "crossAxisAlignment": "start" },
+              "children": [
+                { "type": "icon", "props": { "name": "lightbulb", "size": 20, "color": "#F57F17" } },
+                { "type": "spacer", "props": { "width": 10, "height": 1 } },
+                {
+                  "type": "expanded",
+                  "children": [
+                    {
+                      "type": "text",
+                      "props": { "content": "Tip: Actions are defined as { \"type\": \"snackbar\", \"message\": \"Hello!\" }. Add an \"action\" field to any component to make it interactive.", "style": { "fontSize": 13, "color": "#795548" } }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+
+        { "type": "spacer", "props": { "height": 24 } },
+
+        {
+          "type": "button",
+          "props": { "label": "Next: Debugging", "style": { "backgroundColor": "#820AD1", "textColor": "#FFFFFF" } },
+          "action": { "type": "navigate", "targetScreenId": "onboarding_debugging" }
+        }
+      ]
+    }
+  }
+}
